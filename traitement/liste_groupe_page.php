@@ -16,6 +16,20 @@
 
 	while($donnees=$rep->fetch()){
 		echo('<div class="well">');	
+		                                
+								
+								$img=$bdd->query('SELECT chemin from image WHERE idgroup = '.$donnees['id'].' ');
+								$chemin=$img->fetch();
+								
+								if($chemin!=NULL){
+								echo('<img src="');
+								echo $chemin['chemin'];
+								echo('" style="width:20%;height:20%;">');
+								}
+									else{
+										echo('<img src="./uploaded/defaut.jpg" style="width:20%;height:20%;">');
+									}
+								
 		echo('<a href="groupe_page.php?valeur='.$donnees['id'].'">'.$donnees['nom'].'<br /></a>');
 		echo('<p>'.$donnees['description'].'</p>');
 			echo('<div class="well">');	

@@ -87,7 +87,21 @@ setTimeout('refresh_liste()', 1500);
                              <a href="profil.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profil<br /></a>
                           </h4>
                             <p id="photoprofil">
-                                <img src="imag4.png"/ style="width:60%;height:150px;">
+
+							<?php
+								
+								$img=$bdd->query('SELECT chemin from image INNER JOIN utilisateur ON image.idutil = utilisateur.id where utilisateur.uha =\''.$login.'\' ');
+								$chemin=$img->fetch();
+								
+								if($chemin!=NULL){
+								echo('<img src="');
+								echo $chemin['chemin'];
+								echo('" style="width:60%;height:60%;">');
+								}
+									else{
+										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;">');
+									}
+								?>
                             </p>
                          </div>
                           <div class="col-md-6">
@@ -163,8 +177,21 @@ setTimeout('refresh_liste()', 1500);
                 </div>
                   <div class="well"> 
                     <a href="#">Paramètres du compte</a><br/>
-                    <a href="#">Changer votre photo de profil</a><br/>
-                    <a href="./traitement/modification_profil.php">Modifier</a><br/>
+                   <!-- <a href="./traitement/photo_profil.php">Changer votre photo de profil</a><br/>-->
+                    <a href="./traitement/modification_profil.php">Modifier</a><br/> 
+					<form name="changement" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Changer de photo de profil <input type="file" name="fichier">
+					<input type ="submit" name="Changer" value="Changer" >
+					</form>
+					
+					<?php
+					if(isset($_POST['Changer'])){ 
+						$fichier = $_FILES['fichier']['name'] ;
+						include('./traitement/upload_profil.php');
+						
+					}
+					?>
+					
                    </div>
                    <div class="well" id ="Publication">
 			<form name="Publier" method="post" enctype="multipart/form-data">
