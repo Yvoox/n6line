@@ -162,12 +162,17 @@ $sessionid=$name->fetch();
 		$rep = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where utilisateur.id = \''.$id.'\' ORDER BY date desc');
 
 		include('./traitement/smiley.php'); 
+		include('./traitement/video_youtube.php'); 
+		
 		while($donnees=$rep->fetch()){
 			echo('<div class="well">');
 			$id_actualite = $bdd ->query('SELECT id from actualite where contenu = \''.$donnees['contenu'].'\' and titre = \''.$donnees['titre'].'\' ') ; 
 			$id = $id_actualite->fetch(); 
 			echo('<h2>'.$donnees['titre'].'</h2>');
 			echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
+			
+			isYoutubeVideo($donnees['contenu'],'100%','100%'); 
+			
 			if($donnees['position'] != ''){
 				echo('<p>'.'À '.$donnees['position'].'</p>'); 
 			}

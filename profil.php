@@ -167,6 +167,7 @@ setTimeout('refresh_liste()', 1500);
                     <a href="./traitement/modification_profil.php">Modifier</a><br/>
                    </div>
                    <div class="well" id ="Publication">
+				   
 			<form name="Publier" method="post" enctype="multipart/form-data">
 
 		
@@ -240,8 +241,8 @@ setTimeout('refresh_liste()', 1500);
 			$id = $id_actualite->fetch(); 
 			//echo $id[0]; 
 			
-			$f = $bdd->query('SELECT fichier FROM actualite INNER JOIN image ON image.idact = actualite.id AND actualite.id = \''.$id[0].'\' ' ); 
-			$name_file = $f ->fetch(); 
+			// $f = $bdd->query('SELECT fichier FROM actualite INNER JOIN image ON image.idact = actualite.id AND actualite.id = \''.$id[0].'\' ' ); 
+			// $name_file = $f ->fetch(); 
 			//echo $name_file[0];
 			
 			
@@ -266,7 +267,7 @@ setTimeout('refresh_liste()', 1500);
 			echo('<p>'.$donnees['date'].'<p>');
 			?>
 			
-				<a href='./traitement/commenter.php?id=<?php echo $id[0]; ?> '>Commenter <?php echo '('.count_com($id[0]).')' ; ?> </a>
+				<a href='./commenter.php?id=<?php echo $id[0]; ?> '>Commenter <?php echo '('.count_com($id[0]).')' ; ?> </a>
 			
 			<?php
 			echo('</div>');
