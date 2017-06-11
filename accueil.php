@@ -189,14 +189,13 @@ setTimeout('refresh_chat()', 1500);
 					<div class="well" >
 						<div id ="Publication" class="row">
 							
-							<form name="Publier" action="./traitement/actualite.php" method="post" enctype="multipart/form-data">
+							<form name="Publier" action="./traitement/actualite.php" method="post">
 							
 								<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
 								<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
 								<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
-								<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 								<input type ="submit" name="Publier" value="Publier" >
-								
+								<input type ="submit" name="Photo/video" value="Photo/vidéo" >
 								
 							</form>
 			
