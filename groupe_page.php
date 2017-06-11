@@ -172,7 +172,7 @@ setTimeout('refresh_liste()', 1500);
                 </div>
                   <div class="well"> 
 				  <?php if($id_utilisateur['admin'] == 1){
-                    echo('<a href="#">Supprimer le groupe</a><br/>');
+                    echo('<a href="./traitement/suppression_groupe.php?valeur='.$_GET['valeur'].'">Supprimer le groupe</a><br/>');
 					echo('<form name="changement" method="post" enctype="multipart/form-data">');
 					echo('<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Changer la photo de groupe <input type="file" name="fichier">');
 					echo('<input type ="submit" name="Changer" value="Changer" >');
@@ -194,6 +194,8 @@ setTimeout('refresh_liste()', 1500);
 		}
 		
 		$login = $_SESSION['login']; 
+		
+		$bdd->query('DELETE FROM image where idgroup = '.$_GET['valeur'].' ');
 
 		$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,0,'.$_GET['valeur'].',\''.$chemin.'\') '); 
 		
@@ -242,18 +244,19 @@ setTimeout('refresh_liste()', 1500);
 					}
 					
 					
-                    echo('<a href="#">Gestion des membres</a><br/>');
+                    echo('<a href="./gestion_membre.php?valeur='.$_GET['valeur'].'">Gestion des membres</a><br/>');
 				  }
 				  else echo('L\'accès au panel de gestion du groupe est reservé aux administrateurs');?>
                    </div>
                    <div class="well" >
-			<form name="Publier" method="post">
+			<form name="Publier" method="post" enctype="multipart/form-data">
 		
 				<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
 				<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
 				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
-				<input type ="submit" name="Photo/video" value="Photo/vidéo" >
+
 				
 				
 			</form>
@@ -280,6 +283,51 @@ setTimeout('refresh_liste()', 1500);
 			
 				$id_uti = $id_utilisateur->fetch();
 				$id_act = $id_actualite ->fetch(); 
+				
+							if(isset($_FILES['fichier'])){
+				 $fichier = $_FILES['fichier']['name'] ;
+				 echo($fichier);
+				 
+				 
+				 $dossier = './uploaded/';
+
+	$fichier = basename($_FILES['fichier']['name']); 
+	$taille_maxi = 100000;
+	$taille = filesize($_FILES['fichier']['tmp_name']);
+	$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+	$extension = strrchr($_FILES['fichier']['name'], '.'); 
+	if(!in_array($extension, $extensions)){
+		$erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+	}
+	
+	if($taille>$taille_maxi){
+     $erreur = 'Le fichier est trop gros...';
+	}
+	
+	if(!isset($erreur)){
+		$fichier = strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+		$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+
+     
+		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
+			echo 'Upload effectué avec succès !';
+			$chemin = $dossier.$fichier;
+			echo '</br>'.$chemin.'</br>' ; 
+			$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,'.$id_act[0].',0,\''.$chemin.'\') ');
+		}
+		else{
+			echo 'Echec de l\'upload !';
+		}
+	}
+	else{
+     
+	 echo $erreur;
+	}
+				 
+				 
+			 }
+				
+				
 			
 				$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\',0) '); 
 			
@@ -312,7 +360,16 @@ setTimeout('refresh_liste()', 1500);
 						if($util['admin'] == 1){
 				echo('<a href=\'./traitement/deleteOnProfile.php?id='.$id[0].'\'>Supprimer</a>');
 						}
-			
+
+							$img=$bdd->query('SELECT chemin from image WHERE idact ='.$donnees['idact'].' ');
+	$chemin=$img->fetch();
+	
+					if($chemin!=NULL){	
+		echo('</br><img src="');
+		echo $chemin['chemin'];
+		echo('" style="width:40%;height:40%;">');
+	}
+						
 
 			echo('<h2>'.$donnees['titre'].'</h2>');
 			echo('<p>'.$donnees['contenu'].'<p>');

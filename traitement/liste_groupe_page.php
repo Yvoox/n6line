@@ -30,8 +30,8 @@
 										echo('<img src="./uploaded/defaut.jpg" style="width:20%;height:20%;">');
 									}
 								
-		echo('<a href="groupe_page.php?valeur='.$donnees['id'].'">'.$donnees['nom'].'<br /></a>');
-		echo('<p>'.$donnees['description'].'</p>');
+		echo('<div class="well"  style="text-align:center;"><a href="groupe_page.php?valeur='.$donnees['id'].'">'.$donnees['nom'].'<br /></a></div>');
+		echo('<p>Description : '.$donnees['description'].'</p>');
 			echo('<div class="well">');	
 								echo('<h4> Liste des membres :</h4>');
 						$membre=$bdd->query('SELECT * FROM groupe INNER JOIN appartient ON groupe.id = appartient.idGroup INNER JOIN utilisateur ON appartient.idUtil = utilisateur.id where groupe.id='.$donnees['id'].' ORDER BY appartient.admin DESC');
