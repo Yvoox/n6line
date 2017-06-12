@@ -282,7 +282,7 @@ setTimeout('refresh_liste()', 1500);
 				$id_uti = $id_utilisateur->fetch();
 				$id_act = $id_actualite ->fetch(); 
 				
-							if(isset($_FILES['fichier'])){
+							if(isset($_FILES['fichier']) && !empty($_FILES['fichier']['name'])){
 				 $fichier = $_FILES['fichier']['name'] ;
 				 echo($fichier);
 				 

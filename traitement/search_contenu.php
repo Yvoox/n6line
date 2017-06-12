@@ -12,7 +12,7 @@
 	$search = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where COALESCE(contenu, \'\')   LIKE \'%'.$_POST['search'].'%\' ORDER BY date DESC');
 	$search_title = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where COALESCE(titre, \'\')   LIKE \'%'.$_POST['search'].'%\' ORDER BY date DESC');
 	$search_pos = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where COALESCE(position, \'\')   LIKE \'%'.$_POST['search'].'%\' ORDER BY date DESC');
-	include('./smiley.php');
+	include('./traitement/smiley.php');
 	echo('<h2> Recherche dans les contenus : </h2>');
 	while($result=$search->fetch()){
 	if($result['mkgroup'] == 0){

@@ -31,7 +31,7 @@
 					<h1>Connexion à n6line</h1>
 					<h2>Le réseau social de l'ENSISA</h2>
                     
-					<form role="form" class="form-horizontal" method="post" action="./traitement/connexion.php" accept-charset="utf-8">
+					<form  class="form-horizontal" method="post" action="./traitement/connexion.php" accept-charset="utf-8">
 						<div class="form-group">
 							<div class="col-md-8"><input name="login" placeholder="Adresse mail uha" class="form-control" type="text" id="login"/></div>
 						</div> 

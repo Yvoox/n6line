@@ -60,11 +60,10 @@ setTimeout('refresh_liste()', 1500);
 	$donnees = $req->fetch(); 
 	
 	
-	echo '<title>'.$donnees['prenom']." ".$donnees['nom'].'</title>' ; 
 	
 	
 	?>
-<body onload='refresh_liste(); refresh_actualite();'>
+
 
     <div class="container">
 	
@@ -73,7 +72,7 @@ setTimeout('refresh_liste()', 1500);
 		</form>
         <div class="row" style="">
             <div class="col-md-3" id="list" >
-                <strong>Profil  </strong> <a href="#" class="btn btn-xs btn-danger"> Déconnexion</a> 
+           
 
                 
         
@@ -96,10 +95,10 @@ setTimeout('refresh_liste()', 1500);
 								if($chemin!=NULL){
 								echo('<img src="');
 								echo $chemin['chemin'];
-								echo('" style="width:60%;height:60%;">');
+								echo('" style="width:60%;height:60%;" alt="image profile>">');
 								}
 									else{
-										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;">');
+										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;" alt="image profile>"');
 									}
 								?>
                             </p>
@@ -115,11 +114,11 @@ setTimeout('refresh_liste()', 1500);
 						
 						while($donnees=$rep->fetch()){
 	
-							echo('Nom : '.$donnees['nom'].'</br>');
-							echo('Prénom : '.$donnees['prenom'].'</br>');
-							echo('Adresse UHA : '.$donnees['uha'].'</br>');
-							echo('Âge : '.$donnees['age'].' ans</br>');
-							echo('Adresse : '.$donnees['adresse'].'</br>');
+							echo('<p>Nom : '.$donnees['nom'].'</p>');
+							echo('<p>Prénom : '.$donnees['prenom'].'</p>');
+							echo('<p>Adresse UHA : '.$donnees['uha'].'</p>');
+							echo('<p>Âge : '.$donnees['age'].' ans</p>');
+							echo('<p>Adresse : '.$donnees['adresse'].'</p>');
 						}
 						
 						?>
@@ -152,7 +151,7 @@ setTimeout('refresh_liste()', 1500);
 				</p>
                            <form name = "description" method="post" >
 			
-				<textarea align="left" placeholder="Ecrivez quelque chose sur vous ici ... " name="description_profil" style="height: 15%; width: 100%"><?php
+				<textarea placeholder="Ecrivez quelque chose sur vous ici ... " name="description_profil" style="height: 15%; width: 100%"><?php
 					$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
 					$id_utilisateur = $rep->fetch(); 
 					if(isset($_POST['Modifier'])){ 
@@ -178,7 +177,7 @@ setTimeout('refresh_liste()', 1500);
                   <div class="well"> 
                     <a href="#">Paramètres du compte</a><br/>
                    <!-- <a href="./traitement/photo_profil.php">Changer votre photo de profil</a><br/>-->
-                    <a href="./traitement/modification_profil.php">Modifier</a><br/> 
+                    <a href="./modification_profil.php">Modifier</a><br/> 
 					<form name="changement" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Changer de photo de profil <input type="file" name="fichier">
 					<input type ="submit" name="Changer" value="Changer" >
@@ -234,7 +233,7 @@ setTimeout('refresh_liste()', 1500);
 				$id_act = $id_actualite ->fetch(); 
 			
 			
-			if(isset($_FILES['fichier'])){
+			if(isset($_FILES['fichier']) && !empty($_FILES['fichier']['name'])){
 				 $fichier = $_FILES['fichier']['name'] ;
 				 echo($fichier);
 				 

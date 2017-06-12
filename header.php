@@ -16,7 +16,7 @@ header('Location: ./traitement/deconnexion.php');
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>N6Line</title>
@@ -46,10 +46,10 @@ color:white;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./accueil.php"><img src="./img/image1.png"></a>
+          <a class="navbar-brand" href="./accueil.php"><img src="./img/image1.png" alt="accueil"></a>
         </div>
           <div class="navbar-collapse collapse col-sm-3 col-md-3 navbar-left">
-              <form class="navbar-form" action="./traitement/search_contenu.php" method="post" name="search">
+              <form class="navbar-form" action="./resultats_actualites.php" method="post" name="search">
                   <div class="input-group">
 				  
                       <input type="text" class="form-control" placeholder="Chercher des actualités" name="search">
@@ -61,7 +61,7 @@ color:white;
               </form>
           </div>
 		  <div class="navbar-collapse collapse col-sm-3 col-md-3 navbar-left">
-              <form class="navbar-form" action="./traitement/search_personne.php" method="post" name="search">
+              <form class="navbar-form" action="./resultats_personnes.php" method="post" name="search">
                   <div class="input-group">
 				  
                       <input type="text" class="form-control" placeholder="Chercher des personnes" name="search">
@@ -82,7 +82,7 @@ color:white;
 					$idutil=$id->fetch();
 			 $nb = $bdd->query('SELECT count(idutil) as id_util FROM notificationmessage INNER JOIN utilisateur ON notificationmessage.idutil = utilisateur.id where utilisateur.id ='.$idutil['id'].' AND notificationmessage.vu=0');
 					 $nb_mess=$nb->fetch();
-					 echo('<li><span class="label label-pill label-danger count" aria-hidden="true" style="padding-top:0px;">'.$nb_mess['id_util'].'</span> </a></li>');
+					 echo('<li><span class="label label-pill label-danger count" aria-hidden="true" style="padding-top:0px;">'.$nb_mess['id_util'].'</span></li>');
 					// echo('<li><font color="red">'.$nb_mess['id_util'].'</font></li>');
 					?>
 					

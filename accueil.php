@@ -1,6 +1,7 @@
+<?php include('./header.php'); ?>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
-<script language="javascript" type='text/javascript'>
+<script>
     function auto_deco(){
         window.location="./traitement/auto_deco.php";
     }
@@ -165,7 +166,7 @@ setTimeout('refresh_chat()', 1500);
 }
 
 </script>
-<?php include('./header.php'); ?>
+
 
     <div class="container">
 	
@@ -191,9 +192,9 @@ setTimeout('refresh_chat()', 1500);
 							
 							<form name="Publier" action="./traitement/actualite.php" method="post" enctype="multipart/form-data">
 							
-								<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-								<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-								<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+								<input type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+								<input type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+								<input type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 								<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 								<input type ="submit" name="Publier" value="Publier" >
 								
@@ -208,7 +209,7 @@ setTimeout('refresh_chat()', 1500);
 				<div class="col-md-2">
 					
 						<div class="well"><h5> SPONSORISE</h5><p>
-							<img src="./img/imag4.png" style="width:100%"/></p>
+							<img src="./img/imag4.png" style="width:100%" alt="iariss"/></p>
 							<p>
 							Retrouver nous sur <a href="#">Iariss </a>pour plus d'infos
 							</p>

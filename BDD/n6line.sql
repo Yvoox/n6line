@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 07 Juin 2017 à 17:02
+-- Généré le :  Lun 12 Juin 2017 à 14:17
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -32,21 +32,105 @@ CREATE TABLE `actualite` (
   `contenu` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fichier` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NOT NULL,
+  `mkgroup` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `actualite`
 --
 
-INSERT INTO `actualite` (`id`, `titre`, `contenu`, `position`, `fichier`, `date`) VALUES
-(120, '', 'sdfdsf', '', '', '2017-06-07 15:20:10'),
-(118, 'fddffd', 'fdsfff', 'df', '', '2017-06-07 15:18:09'),
-(113, '', 'fjjhgj', '', '', '2017-06-07 14:52:50'),
-(112, '', 'Salut :) ', '', '', '2017-06-07 10:45:14'),
-(114, '', 'Super :)', '', '', '2017-06-07 15:00:17'),
-(119, 'dsf', 'dgsgsd', 'dgsg', '', '2017-06-07 15:18:55'),
-(117, '', 'dfsdfsfs', '', '', '2017-06-07 15:17:57');
+INSERT INTO `actualite` (`id`, `titre`, `contenu`, `position`, `fichier`, `date`, `mkgroup`) VALUES
+(34, 'gzegergez', 'gergez', '', '', '2017-06-03 14:20:57', 0),
+(35, 'vetvevfd', 'vdfvdfvd', '', '', '2017-06-03 14:23:33', 0),
+(36, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:24:25', 0),
+(37, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:25:21', 0),
+(38, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:25:38', 0),
+(39, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:26:19', 0),
+(40, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:27:19', 0),
+(41, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:28:41', 0),
+(42, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:29:12', 0),
+(43, 'bbfgbsdsd', 'bdbds', '', '', '2017-06-03 14:29:28', 0),
+(44, 'vdvqsvsqdv', 'sqvsqdvq', '', '', '2017-06-03 14:30:25', 0),
+(45, 'vaezrvfeqvfdvfd', 'vfdsvfdvvdfs', '', '', '2017-06-03 14:30:37', 0),
+(46, 'vsvqvqvsv', 'vsdfvds', '', '', '2017-06-03 14:31:08', 0),
+(47, 'vsvqvqvsv', 'vsdfvds', '', '', '2017-06-03 14:31:26', 0),
+(48, 'vvdsfvdsfv', 'vdsfvdsf', '', '', '2017-06-03 14:33:24', 0),
+(49, 'verrve', 'veververv', '', '', '2017-06-03 14:33:46', 0),
+(78, 'fvgfgdfgdsg', 'sdgdsfgdsfg', 'sdgsdfgsdfg', '', '2017-06-06 14:03:55', 0),
+(33, 'bggdbdfgbd', 'bfgdbfdg', '', '', '2017-06-03 14:20:10', 0),
+(32, 'vqfdfsvfvsdfv', 'dsfvdsvds', '', '', '2017-06-03 14:17:35', 0),
+(31, 'bgdbgfbdgfbgfd', 'bfdbfdgbfdg', '', '', '2017-06-03 14:14:50', 0),
+(67, 'salut ca va', 'heho', 'ballersdorf', '', '2017-06-05 09:12:28', 0),
+(77, 'vfvqvdsfvsdvfsdv', 'sdfvdsfv', 'dfvdsvfv', '', '2017-06-06 14:03:49', 0),
+(82, 'gros test', 'je merge', 'mulhouse', '', '2017-06-07 11:27:10', 0),
+(86, 'freferfer', 'ferfer', 'ferferfe', '', '2017-06-07 11:58:18', 1000),
+(83, 'gros test', 'je merge', 'mulhouse', '', '2017-06-07 11:29:57', 0),
+(84, 'gros test', 'je merge', 'mulhouse', '', '2017-06-07 11:30:11', 0),
+(87, 'salut', 'publie bien cool ;)', 'mulhouse', '', '2017-06-07 11:58:35', 0),
+(88, 'brgbtb', 'brtbrt', 'rbrtbrt', '', '2017-06-07 13:11:07', 0),
+(89, 'fdsfgdsfgdsfg', 'dsfgsdfgdsgf', 'sdgdsfgdsfg', '', '2017-06-07 13:11:19', 0),
+(90, 'je dois reconnaitre', 'arzerz', 'arze', '', '2017-06-07 13:11:44', 0),
+(92, 'berberberb', 'brebrebret', 'retbretb', '', '2017-06-07 21:06:21', 0),
+(93, 'aaaaa', 'aaaa', 'aaaa', '', '2017-06-07 21:10:21', 0),
+(94, 'v zer bvvrtz', 'vezrgzezg', 'vzerzegegrz', '', '2017-06-07 21:13:20', 0),
+(95, 'test 08-06-2017', 'ceci est un test pour 08-06', '', '', '2017-06-08 07:40:44', 0),
+(98, 'test depuis le profil', ' azeeaz e', 'azeaz eaz', '', '2017-06-08 07:45:04', 0),
+(99, 'test depuis le groupe', 'dzekhfzke', 'sur le groupe', '', '2017-06-08 07:47:30', 23),
+(100, 'test depuis le groupe', 'dzekhfzke', 'sur le groupe', '', '2017-06-08 07:48:36', 23),
+(101, 'test depuis le groupe', 'dzekhfzke', 'sur le groupe', '', '2017-06-08 07:50:04', 23),
+(102, 'tereqtrg', 'qergqregqe', 'tqrgrgg', '', '2017-06-08 07:50:11', 23),
+(103, 'vqvsdvqsv', 'vqsdvsqdv', 'sqvvqsdvsq', '', '2017-06-08 07:54:50', 23),
+(104, 'test depuis le groupe', 'test', 'test', '', '2017-06-08 07:55:03', 23),
+(105, 'geqrggqerg', 'gezgze', 'ergegzegez', '', '2017-06-08 09:09:06', 0),
+(107, 'fzefzef', 'fzefze', 'fzefzefz', '', '2017-06-08 12:17:22', 2),
+(108, 'test degvqfbfdq', 'bvqbbqdb', 'fsbqvdfvfdvd', '', '2017-06-11 13:22:52', 0),
+(109, 'fvqfsvdssv', 'vqsdvsqdvqsd', 'dvqsvqsvd', '', '2017-06-11 13:23:48', 0),
+(110, 'gagraggr', 'ezrgezgez', 'ezgrzegrezrg', '', '2017-06-11 13:28:05', 0),
+(111, 'fezfezef', 'fzefzefze', 'fezfezfz', '', '2017-06-11 14:04:22', 0),
+(112, 'retest', 'rzerazerze', '', '', '2017-06-11 14:20:29', 0),
+(113, 'frezvezv', 'vezvezzevrverz', 'ezvvezvrez', '', '2017-06-11 14:52:47', 0),
+(114, 'gagger', 'gaergaerg', 'fgaergareeg', '', '2017-06-11 14:53:14', 0),
+(115, 'azczevczrg', 'vcrgarxzegeacerv', 'arggxaecr', '', '2017-06-11 14:54:30', 0),
+(116, 'zu', 'zfefze', 'fzzefz', '', '2017-06-11 14:56:04', 0),
+(117, 'varvrevrea', 'eavrearv', 'vaevaerv', '', '2017-06-11 14:57:27', 0),
+(118, 'farvaeve', 'veavae', 'arvearve', '', '2017-06-11 14:58:00', 0),
+(119, 'caazracze', 'zaeczea', 'zaeczaeceaz', '', '2017-06-11 15:00:17', 0),
+(120, 'bqdbfqdbf', 'bdbdsbds', 'bfbdsbds', '', '2017-06-11 15:01:27', 0),
+(121, 'faergerg', 'gaergaergaer', 'aergaergga', '', '2017-06-11 15:02:06', 0),
+(122, 'gergzezgze', 'gergzergz', 'hezgezgez', '', '2017-06-11 15:03:46', 0),
+(123, 'ezrgzergezr', 'gezgezrgez', 'gzergzerg', '', '2017-06-11 15:05:42', 0),
+(124, 'gargerg', 'aegaegae', 'aegeargeaeg', '', '2017-06-11 15:06:42', 0),
+(125, 'azfefaz', 'zafefzaefa', 'fazfazef', '', '2017-06-11 15:09:34', 0),
+(126, 'afzfaz', 'efazefaze', 'fazefazefaz', '', '2017-06-11 15:10:28', 0),
+(127, 'e', 'zea', 'azeaz eaz', '', '2017-06-11 15:12:44', 0),
+(128, 'fzaefzea', 'zfefzae', 'zfzaefzaef', '', '2017-06-11 15:14:40', 0),
+(132, 'zeczezca', 'czaczac', 'czaczcz', '', '2017-06-11 15:23:51', 0),
+(136, 'cdcqscsq', 'csqdcsqd', 'sqdcsdqcq', '', '2017-06-11 15:41:48', 0),
+(137, 'test depuis le groupe', 'fzaefzaefaze', 'fazfazfzae', '', '2017-06-11 15:55:45', 23),
+(138, 'test depuis le groupe', 'fzaefzaefaze', 'fazfazfzae', '', '2017-06-11 15:56:07', 23),
+(139, 'test depuis le groupe', 'fzaefzaefaze', 'fazfazfzae', '', '2017-06-11 15:56:43', 23),
+(140, 'vzveazvezr', 'verzvezvz', 'evzvezvez', '', '2017-06-11 16:00:51', 21),
+(141, 'fazefzaeff', 'zfaefzaefzae', 'zafzaefzae', 'tra.jpg', '2017-06-11 16:04:00', 0),
+(142, 'azecaze', 'czaeczae', 'ceczazcecaz', 'tra.jpg', '2017-06-11 16:05:55', 0),
+(143, 'afzrfzaezr', 'fezrfgezrf', 'fezrferzfz', 'tra.jpg', '2017-06-11 16:06:56', 0),
+(144, 'rggqdvqsfv', 'vqfvqvdf', 'fdvqfdvfv', '', '2017-06-11 16:08:03', 21),
+(145, 'rggqdvqsfv', 'vqfvqvdf', 'fdvqfdvfv', '', '2017-06-11 16:08:41', 21),
+(146, 'rggqdvqsfv', 'vqfvqvdf', 'fdvqfdvfv', '', '2017-06-11 16:09:04', 21),
+(147, 'vvsdfvdsf', 'vdsvdsfvfdsv', 'vdfvdsfvsd', 'zu.jpg', '2017-06-11 16:22:49', 0),
+(148, 'test image sur main', 'fzefezfzezfe', '', '', '2017-06-11 16:26:11', 0),
+(149, 'zefzefefze', 'https://www.youtube.com/watch?v=tXsQJhoauxc', 'fzefzef', '', '2017-06-12 09:26:35', 0),
+(150, 'fezfzefzefz', 'https://www.youtube.com/watch?v=tXsQJhoauxc', 'fezfzef', '', '2017-06-12 09:52:11', 21),
+(151, 'arfefzrefarf', 'fearfaer', 'faerfaerfe', '', '2017-06-12 09:55:08', 0),
+(154, 'fsdffds', 'fsdfsdfds', 'fsdfsdfsd', '', '2017-06-12 12:09:32', 0),
+(155, 'fsdfsds', 'fsdfsdfsdfsdf', 'fsdfsdfsdsfed', '', '2017-06-12 12:09:42', 0),
+(156, 'fsdfsds', 'fsdfsdfsdfsdf', 'fsdfsdfsdsfed', '', '2017-06-12 12:10:00', 0),
+(157, 'fqzefzezf', 'ersgfsgsdf', 'sdfgergerz', '', '2017-06-12 12:10:04', 0),
+(158, 'dernier test', 'fefzfzef', '', '', '2017-06-12 12:10:13', 0),
+(159, 'gtzevqcaxze', 'fzcevvczq', 'fwzxecvcx', '', '2017-06-12 12:10:26', 21),
+(160, 'gtzevqcaxze', 'fzcevvczq', 'fwzxecvcx', '', '2017-06-12 12:11:38', 21),
+(161, 'fezqqeqfef', 'dsfsdqfqsdf', 'dsfqsdfdqsf', '', '2017-06-12 12:11:42', 21),
+(162, 'dernier test', 'arazraz', '', '', '2017-06-12 12:11:55', 21);
 
 -- --------------------------------------------------------
 
@@ -75,17 +159,26 @@ INSERT INTO `administration` (`id`, `fonction`) VALUES
 
 CREATE TABLE `appartient` (
   `idUtil` int(11) NOT NULL,
-  `idGroup` int(11) NOT NULL
+  `idGroup` int(11) NOT NULL,
+  `admin` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `appartient`
 --
 
-INSERT INTO `appartient` (`idUtil`, `idGroup`) VALUES
-(1, 1),
-(456, 2),
-(24535, 1);
+INSERT INTO `appartient` (`idUtil`, `idGroup`, `admin`) VALUES
+(24535, 1, 0),
+(1, 1, 0),
+(456, 2, 0),
+(2, 18, 1),
+(2, 19, 1),
+(2, 20, 1),
+(2, 21, 1),
+(2, 22, 1),
+(2, 23, 1),
+(2, 24, 1),
+(2, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -105,41 +198,8 @@ CREATE TABLE `commentaire` (
 --
 
 INSERT INTO `commentaire` (`id`, `idutil`, `contenu`, `date`) VALUES
-(25, 2, 'fsdfds', '2017-06-07 13:37:01'),
-(24, 2, 'gdgdf', '2017-06-07 13:31:04'),
-(23, 2, 'gfdgfddgf', '2017-06-07 13:19:26'),
-(22, 2, 'Ok', '2017-06-07 13:17:53'),
-(21, 2, 'DFSFSDDSa', '2017-06-07 13:17:48'),
-(20, 2, 'DFSFSDS', '2017-06-07 13:17:42'),
-(19, 2, 'AAA', '2017-06-07 13:17:37'),
-(18, 2, 'gdfgfdf', '2017-06-07 13:09:46'),
-(26, 2, 'dgsgfdg', '2017-06-07 14:13:19'),
-(27, 2, 'C\'est cool ;) ', '2017-06-07 14:17:29'),
-(28, 2, 'C\'est super ', '2017-06-07 14:18:21'),
-(29, 2, 'ffdg', '2017-06-07 14:18:26'),
-(30, 2, ':)', '2017-06-07 14:20:28'),
-(31, 2, 'OK', '2017-06-07 14:27:38'),
-(32, 2, 'Tu dois être la ', '2017-06-07 14:28:05'),
-(33, 2, 'Coucou c\'est maman ', '2017-06-07 14:41:12'),
-(34, 2, 'Coucou c\'est maman ', '2017-06-07 14:44:06'),
-(35, 2, '\'\'', '2017-06-07 14:44:13'),
-(36, 2, 'Ok ', '2017-06-07 14:44:22'),
-(37, 2, 'dfsdf', '2017-06-07 14:45:21'),
-(38, 2, 'fdgdf', '2017-06-07 14:45:34'),
-(39, 2, '\'\'\'', '2017-06-07 14:49:37'),
-(40, 2, 'ok', '2017-06-07 14:50:51'),
-(41, 2, 'Met toi au deb', '2017-06-07 14:51:00'),
-(42, 2, '\'\'', '2017-06-07 14:51:15'),
-(43, 2, ';', '2017-06-07 14:51:21'),
-(44, 2, ';)', '2017-06-07 14:51:26'),
-(45, 2, 'ghh', '2017-06-07 14:52:54'),
-(46, 456, 'yrhffh', '2017-06-07 14:54:11'),
-(47, 456, 'C\'est jean qui a commenté cette fois ci ;) ', '2017-06-07 14:54:28'),
-(57, 1, 'Ok', '2017-06-07 15:19:02'),
-(54, 456, 'ok', '2017-06-07 15:14:43'),
-(59, 1, 'GFJOFDJ', '2017-06-07 15:23:36'),
-(63, 456, 'dsfsd', '2017-06-07 15:31:29'),
-(65, 456, 'egege', '2017-06-07 16:38:42');
+(68, 2, 'fsefdsqf', '2017-06-08 12:29:34'),
+(69, 2, 'https://www.youtube.com/watch?v=tXsQJhoauxc', '2017-06-12 09:51:29');
 
 -- --------------------------------------------------------
 
@@ -158,31 +218,8 @@ CREATE TABLE `commente` (
 --
 
 INSERT INTO `commente` (`id`, `idact`, `idcom`) VALUES
-(1, 112, 18),
-(2, 112, 19),
-(3, 112, 20),
-(4, 112, 21),
-(5, 112, 22),
-(6, 111, 23),
-(7, 112, 24),
-(8, 112, 25),
-(9, 112, 26),
-(10, 112, 29),
-(11, 112, 30),
-(12, 111, 22),
-(13, 112, 32),
-(14, 112, 38),
-(15, 112, 22),
-(16, 112, 41),
-(17, 112, 43),
-(18, 112, 44),
-(19, 113, 45),
-(20, 113, 46),
-(30, 119, 57),
-(38, 120, 65),
-(27, 114, 54),
-(32, 120, 59),
-(36, 119, 63);
+(41, 105, 68),
+(42, 149, 69);
 
 -- --------------------------------------------------------
 
@@ -231,17 +268,37 @@ INSERT INTO `fonction` (`idUtil`, `idEtudiant`, `idAdmi`) VALUES
 
 CREATE TABLE `groupe` (
   `id` int(11) NOT NULL,
-  `nom` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `nom` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `nom`) VALUES
-(1, 'Amoureux des fleurs'),
-(1, 'Amoureux des fleurs'),
-(2, 'Amoureux des Bryans');
+INSERT INTO `groupe` (`id`, `nom`, `description`) VALUES
+(1, 'Amoureux des fleurs', ''),
+(2, 'Amoureux des fleurs', ''),
+(3, 'Amoureux des Bryans', ''),
+(4, 'tp mathlab', 'Pour partager nos conaissances en mathlab'),
+(5, 'tp mathlab', 'Pour partager nos conaissances en mathlab'),
+(6, 'gerger', 'gerger'),
+(7, 'gfgfd', 'gfdgdf'),
+(8, 'fdsvgsffg', 'gdfgdf'),
+(9, 'ggdhhfgb', 'fgbfgbfg'),
+(10, 'bfgbfgb', 'bfgbfgbf'),
+(11, 'eggrerge', 'egrger'),
+(12, 'ggregrger', 'gergerger'),
+(13, 'gergerge', 'tjtyjty'),
+(14, 'aze', 'azee'),
+(15, 'test final', 'test test'),
+(16, 'zzgegezgezr', 'gergerzgze'),
+(17, 'e&ée&éé"&"é"&é', '"&é"&é"&'),
+(21, 'gezrgzrgzer', 'gzergzer'),
+(22, 'fzefzefzef', 'zefzefzefz'),
+(23, 'last groupe', 'Le dernier et le meilleur'),
+(24, 'trop marre', 'ca marche pas'),
+(25, 'dernière tentative', 'après j\'arrête');
 
 -- --------------------------------------------------------
 
@@ -251,17 +308,34 @@ INSERT INTO `groupe` (`id`, `nom`) VALUES
 
 CREATE TABLE `image` (
   `id` int(11) NOT NULL,
-  `chemin` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `idutil` int(11) NOT NULL,
-  `idact` int(11) DEFAULT NULL
+  `idutil` int(11) DEFAULT NULL,
+  `idact` int(11) DEFAULT NULL,
+  `idgroup` int(11) DEFAULT NULL,
+  `chemin` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `image`
 --
 
-INSERT INTO `image` (`id`, `chemin`, `idutil`, `idact`) VALUES
-(25, './uploaded/et.jpg', 456, 121);
+INSERT INTO `image` (`id`, `idutil`, `idact`, `idgroup`, `chemin`) VALUES
+(16, 2, 0, 0, './uploaded/android.jpg'),
+(5, 0, 0, 23, './uploaded/test.jpg'),
+(8, NULL, 112, NULL, './uploaded/test.jpg'),
+(12, 0, 129, 0, '../uploaded/zu.jpg'),
+(13, 0, 130, 0, '../uploaded/zu.jpg'),
+(15, 0, 131, 0, '../uploaded/android.jpg'),
+(17, 0, 133, 0, '../uploaded/tra.jpg'),
+(18, 0, 134, 0, '../uploaded/tra.jpg'),
+(19, 0, 135, 0, '../uploaded/tra.jpg'),
+(20, 0, 136, 0, './uploaded/zu.jpg'),
+(21, 0, 143, 0, './uploaded/tra.jpg'),
+(22, 0, 144, 0, './uploaded/tra.jpg'),
+(23, 0, 144, 0, './uploaded/tra.jpg'),
+(24, 0, 144, 0, './uploaded/tra.jpg'),
+(25, 0, 147, 0, './uploaded/zu.jpg'),
+(26, 0, 148, 0, './uploaded/tra.jpg'),
+(27, 0, 162, 0, './uploaded/zu.jpg');
 
 -- --------------------------------------------------------
 
@@ -271,7 +345,7 @@ INSERT INTO `image` (`id`, `chemin`, `idutil`, `idact`) VALUES
 
 CREATE TABLE `message` (
   `id` int(11) NOT NULL,
-  `contenu` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `contenu` text COLLATE utf8_unicode_ci NOT NULL,
   `fichier` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -301,7 +375,45 @@ INSERT INTO `message` (`id`, `contenu`, `fichier`, `date`) VALUES
 (18, 'Oui ! Jsuis la\r\nComment ca va ?', '', '2017-06-01 16:34:00'),
 (19, 'Yo mec !', '', '2017-06-02 07:13:19'),
 (20, 'Salut ca va ?\r\n', '', '2017-06-02 08:19:25'),
-(21, 'Oui et toi ?', '', '2017-06-02 08:19:36');
+(21, 'Oui et toi ?', '', '2017-06-02 08:19:36'),
+(22, 'tu es la ?', '', '2017-06-05 09:03:51'),
+(23, ';)', '', '2017-06-06 08:21:30'),
+(24, ':)', '', '2017-06-06 08:21:41'),
+(25, 'test', '', '2017-06-06 09:00:38'),
+(26, 'test', '', '2017-06-06 09:01:32'),
+(27, 'test', '', '2017-06-06 09:01:50'),
+(28, 'nsgnfg', '', '2017-06-06 09:06:40'),
+(29, 'ggst', '', '2017-06-06 09:07:21'),
+(30, 'efbsdbdsbf', '', '2017-06-06 09:09:24'),
+(31, 'fzefe', '', '2017-06-06 09:10:25'),
+(32, 'test', '', '2017-06-06 09:10:52'),
+(33, 'tentative', '', '2017-06-06 09:11:01'),
+(34, 'test', '', '2017-06-06 09:11:08'),
+(35, 'fzefe', '', '2017-06-06 09:11:16'),
+(36, 'salouti', '', '2017-06-06 09:11:24'),
+(37, 'tentative', '', '2017-06-06 09:11:43'),
+(38, 'tesst', '', '2017-06-06 09:12:55'),
+(39, 'teest', '', '2017-06-06 09:15:36'),
+(40, 'teeest', '', '2017-06-06 09:15:56'),
+(41, ';)', '', '2017-06-06 11:47:11'),
+(42, 'Ceci est un test', '', '2017-06-06 13:22:33'),
+(43, 'je tente un test', '', '2017-06-06 13:24:40'),
+(44, 'bonne nuit\r\n', '', '2017-06-06 19:55:09'),
+(45, 'bonne nuit', '', '2017-06-06 19:55:18'),
+(46, 'test', '', '2017-06-06 19:55:28'),
+(47, 'coucou\r\n', '', '2017-06-07 08:22:06'),
+(48, 'coucou', '', '2017-06-07 08:22:11'),
+(49, 'Coucou', '', '2017-06-07 08:22:15'),
+(50, 'gsgdfsfd', '', '2017-06-07 08:22:31'),
+(51, 'gsgdfgsfd', '', '2017-06-07 08:22:46'),
+(52, 'coucou', '', '2017-06-07 08:25:28'),
+(53, ';)\r\n', '', '2017-06-07 12:27:33'),
+(54, 'zergezg', '', '2017-06-08 10:23:50'),
+(55, 'gzegzegzgez', '', '2017-06-08 10:23:51'),
+(56, 'azdasdsda', '', '2017-06-08 10:23:53'),
+(57, 'https://www.youtube.com/watch?v=tXsQJhoauxc', '', '2017-06-12 09:51:39'),
+(58, 'trokool', '', '2017-06-12 09:57:08'),
+(59, 'test des notifications\r\n', '', '2017-06-12 12:01:30');
 
 -- --------------------------------------------------------
 
@@ -325,18 +437,85 @@ INSERT INTO `messtrans` (`idexp`, `iddesti`, `idmessage`) VALUES
 (2, 1, 8),
 (2, 1, 11),
 (2, 2, 7),
+(2, 2, 11),
+(2, 2, 13),
+(2, 2, 50),
+(2, 2, 57),
+(2, 2, 58),
 (2, 456, 9),
 (2, 456, 10),
 (2, 456, 18),
 (2, 456, 19),
 (2, 456, 21),
+(2, 456, 22),
+(2, 456, 23),
+(2, 456, 25),
+(2, 456, 28),
+(2, 456, 29),
+(2, 456, 30),
+(2, 456, 31),
+(2, 456, 33),
+(2, 456, 36),
+(2, 456, 38),
+(2, 456, 39),
+(2, 456, 40),
+(2, 456, 42),
+(2, 456, 43),
+(2, 456, 44),
+(2, 456, 45),
+(2, 456, 53),
+(2, 456, 54),
+(2, 456, 55),
+(2, 456, 56),
+(275, 2752, 2757),
 (456, 1, 13),
 (456, 1, 14),
 (456, 1, 15),
 (456, 2, 12),
 (456, 2, 16),
 (456, 2, 17),
-(456, 2, 20);
+(456, 2, 20),
+(456, 2, 59),
+(456, 456, 23),
+(456, 456, 24);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notificationmessage`
+--
+
+CREATE TABLE `notificationmessage` (
+  `idutil` int(11) NOT NULL,
+  `idmess` int(11) NOT NULL,
+  `vu` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `notificationmessage`
+--
+
+INSERT INTO `notificationmessage` (`idutil`, `idmess`, `vu`) VALUES
+(456, 40, 1),
+(456, 23, 1),
+(456, 42, 1),
+(456, 43, 1),
+(456, 44, 1),
+(456, 45, 1),
+(456, 25, 1),
+(2, 11, 1),
+(2, 13, 1),
+(2, 13, 1),
+(2, 50, 1),
+(2, 7, 1),
+(2, 13, 1),
+(456, 53, 1),
+(456, 54, 1),
+(456, 55, 1),
+(456, 56, 1),
+(2, 57, 1),
+(2, 58, 1),
+(2, 59, 1);
 
 -- --------------------------------------------------------
 
@@ -346,22 +525,77 @@ INSERT INTO `messtrans` (`idexp`, `iddesti`, `idmessage`) VALUES
 
 CREATE TABLE `post` (
   `iduti` int(11) NOT NULL,
-  `idact` int(11) NOT NULL
+  `idact` int(11) NOT NULL,
+  `idgroup` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `post`
 --
 
-INSERT INTO `post` (`iduti`, `idact`) VALUES
-(1, 119),
-(1, 120),
-(2, 112),
-(2, 113),
-(456, 114),
-(456, 115),
-(456, 117),
-(456, 118);
+INSERT INTO `post` (`iduti`, `idact`, `idgroup`) VALUES
+(2, 48, 0),
+(2, 50, 0),
+(456, 87, 0),
+(456, 86, 0),
+(2, 79, 0),
+(2, 78, 0),
+(456, 71, 0),
+(2, 62, 0),
+(2, 67, 0),
+(2, 49, 0),
+(2, 77, 0),
+(2, 51, 0),
+(2, 92, 0),
+(2, 93, 0),
+(2, 94, 0),
+(2, 95, 0),
+(2, 98, 0),
+(2, 103, 0),
+(2, 104, 0),
+(2, 105, 0),
+(456, 107, 0),
+(2, 108, 0),
+(2, 109, 0),
+(2, 110, 0),
+(2, 111, 0),
+(2, 112, 0),
+(2, 113, 0),
+(2, 114, 0),
+(2, 115, 0),
+(2, 116, 0),
+(2, 117, 0),
+(2, 118, 0),
+(2, 119, 0),
+(2, 120, 0),
+(2, 121, 0),
+(2, 122, 0),
+(2, 123, 0),
+(2, 124, 0),
+(2, 125, 0),
+(2, 126, 0),
+(2, 127, 0),
+(2, 128, 0),
+(2, 132, 0),
+(2, 136, 0),
+(2, 137, 0),
+(2, 140, 0),
+(2, 141, 0),
+(2, 142, 0),
+(2, 143, 0),
+(2, 144, 0),
+(2, 147, 0),
+(2, 148, 0),
+(2, 149, 0),
+(2, 150, 0),
+(2, 151, 0),
+(2, 154, 0),
+(2, 155, 0),
+(2, 157, 0),
+(2, 158, 0),
+(2, 159, 0),
+(2, 161, 0),
+(2, 162, 0);
 
 -- --------------------------------------------------------
 
@@ -378,7 +612,7 @@ CREATE TABLE `utilisateur` (
   `age` int(11) NOT NULL,
   `adresse` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `mdp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `mdp` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   `connecte` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -387,9 +621,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `uha`, `@xmpp`, `nom`, `prenom`, `age`, `adresse`, `description`, `mdp`, `connecte`) VALUES
-(1, 'alexandre@uha.fr', 'alexandre@xmpp.fr', 'colicchio', 'alexandre', 23, '19 rue des VERGERS 68100 Mulhouse', '', 'gfbfds45gs26', 0),
-(456, 'jean@uha.fr', 'jean@xmpp.fr', 'fdqbfsfd', 'jean', 23, '58 rue des VERGERS 68100 Mulhouse', 'ydwhdgfhxfhg', 'wvdf57', 1),
-(2, 'alexandre.colicchio@uha.fr', 'alexandre.colicchio@xmpp.fr', 'colicchio', 'Alexandre', 23, '18 rue de l\'économie 68200 mulhouse', 'gsfqgqsgsdgsdq', 'azerty', 0);
+(1, 'alexandre@uha.fr', 'alexandre@xmpp.fr', 'colicchio', 'alexandre', 23, '19 rue des VERGERS 68100 Mulhouse', '', '$2y$10$aBTaOwVjD4CFaG7Tl1p0ROOkmvzIgIFhddMfZfh0zhSiNJ0awb2i.', 0),
+(456, 'jean@uha.fr', 'jean@xmpp.fr', 'fdqbfsfd', 'jean', 23, '58 rue des VERGERS 68100 Mulhouse', 'ydwhdgfhxfhg', '$2y$10$pR7.6ERp1HoXF1ILhzmyiefxC0DbRn3hRehCiTl57x3ReuqNE48YG', 0),
+(2, 'alexandre.colicchio@uha.fr', 'alexandre.colicchio@xmpp.fr', 'colicchio', 'Alexandre', 23, '18 rue de l\'économie 68200 mulhouse', 'gsfqgqsgsdgsdq', '$2y$10$qzw/Zr1XxFN8a3fCdjy7IORZKBCiHhp7voNTO.v7g7/stQu3rg/6W', 1);
 
 --
 -- Index pour les tables exportées
@@ -426,6 +660,12 @@ ALTER TABLE `fonction`
   ADD PRIMARY KEY (`idUtil`,`idEtudiant`,`idAdmi`);
 
 --
+-- Index pour la table `groupe`
+--
+ALTER TABLE `groupe`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `image`
 --
 ALTER TABLE `image`
@@ -457,27 +697,32 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT pour la table `actualite`
 --
 ALTER TABLE `actualite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT pour la table `commente`
 --
 ALTER TABLE `commente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT pour la table `groupe`
+--
+ALTER TABLE `groupe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT pour la table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
