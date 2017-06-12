@@ -1,11 +1,10 @@
-<?php include('./header.php'); ?>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+﻿<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
-<script>
+<script language="javascript" type='text/javascript'>
     function auto_deco(){
         window.location="./traitement/auto_deco.php";
     }
-    setTimeout("auto_deco()",600000);
+    setTimeout("auto_deco()",300000);
 </script>
 
 
@@ -109,7 +108,7 @@ document.getElementById('actualite').innerHTML = tmp;
 
 xhr_object.send(null);
 
-setTimeout('refresh_actualite()', 300000);
+setTimeout('refresh_actualite()', 3000);
 
 }
 
@@ -166,7 +165,7 @@ setTimeout('refresh_chat()', 1500);
 }
 
 </script>
-
+<?php include('./header.php'); ?>
 
     <div class="container">
 	
@@ -188,36 +187,17 @@ setTimeout('refresh_chat()', 1500);
 				
 				<div class="col-md-7">
 					<div class="well" >
-						<div id ="Publication" class="row">
-							
-							<form name="Publier" action="./traitement/actualite.php" method="post" enctype="multipart/form-data">
-							
-								<input class="form-control" type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-								<input class="form-control" type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-								<input class="form-control" type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
-								<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
-								<input type ="submit" name="Publier" value="Publier" >
-								
-								
-							</form>
-			
-						</div>
-					<div class="well" id="actualite"> </div>
+
+					<div class="well"  </div>
+					<h3> Désolé mais vous ne faites pas parti du groupe </h3>
+					<p> Contactez l'administrateur du groupe pour en faire parti <p>
+				<form method="post" action="./accueil.php">
+				<input type="submit" name ="Redirection vers l'accueil" value="Redirection vers l'accueil">
+		</form>
 					</div>
 				</div>
 				
-				<div class="col-md-2">
-					
-						<div class="well"><h5> SPONSORISE</h5><p>
-							<img src="./img/imag4.png" style="width:100%" alt="iariss"/></p>
-							<p>
-							Retrouver nous sur <a href="#">Iariss </a>pour plus d'infos
-							</p>
-					
-						</div>
-						<h6> En6Line, 2016-2017</h6>
-					
-				</div>
+
 	</div>
 
         

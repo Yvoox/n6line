@@ -16,7 +16,7 @@ header('Location: ./traitement/deconnexion.php');
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>N6Line</title>
@@ -46,10 +46,10 @@ color:white;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./accueil.php"><img src="./img/image1.png"></a>
+          <a class="navbar-brand" href="./accueil.php"><img src="./img/logo.png" alt="accueil" height="50" width="70"></a>
         </div>
           <div class="navbar-collapse collapse col-sm-3 col-md-3 navbar-left">
-              <form class="navbar-form" action="./traitement/search_contenu.php" method="post" name="search">
+              <form class="navbar-form" action="./resultats_actualites.php" method="post" name="search">
                   <div class="input-group">
 				  
                       <input type="text" class="form-control" placeholder="Chercher des actualités" name="search">
@@ -61,7 +61,7 @@ color:white;
               </form>
           </div>
 		  <div class="navbar-collapse collapse col-sm-3 col-md-3 navbar-left">
-              <form class="navbar-form" action="./traitement/search_personne.php" method="post" name="search">
+              <form class="navbar-form" action="./resultats_personnes.php" method="post" name="search">
                   <div class="input-group">
 				  
                       <input type="text" class="form-control" placeholder="Chercher des personnes" name="search">
@@ -77,17 +77,17 @@ color:white;
             <li><a href="./profil.php">Profil</a>.</li>
             <li><a href="./chat.php">Messagerie</a></li>
             <li><a href="./groupe.php">Groupe</a></li>
-             <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+             <li><a href="./chat.php"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
 			 <?php $id=$bdd->query('SELECT id FROM utilisateur where uha= \''.$_SESSION['login'].'\'');
 					$idutil=$id->fetch();
 			 $nb = $bdd->query('SELECT count(idutil) as id_util FROM notificationmessage INNER JOIN utilisateur ON notificationmessage.idutil = utilisateur.id where utilisateur.id ='.$idutil['id'].' AND notificationmessage.vu=0');
 					 $nb_mess=$nb->fetch();
-					 echo('<li><span class="label label-pill label-danger count" aria-hidden="true" style="padding-top:0px;">'.$nb_mess['id_util'].'</span> </a></li>');
+					 echo('<li><span class="label label-pill label-danger count" aria-hidden="true" style="padding-top:0px;">'.$nb_mess['id_util'].'</span></li>');
 					// echo('<li><font color="red">'.$nb_mess['id_util'].'</font></li>');
 					?>
 					
-              <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+              <li><a href="./groupe.php"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+              <li><a href="./profil.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
 			  
 			  
              
@@ -95,9 +95,7 @@ color:white;
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock" 
 aria-hidden="true"></span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Créer une page</a></li>
-            <li><a href="#">Créer un groupe</a></li>
-            <li><a href="#">Créer un événement </a></li>
+            <li><a href="./traitement/deconnexion.php">Déconnexion</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Signaler un problème</a></li>
             <li><a href="#">Aide</a></li>
@@ -109,4 +107,4 @@ aria-hidden="true"></span> <span class="caret"></span></a>
     </nav>
 	</header>
 	
-	 <body style=" background: #aaa;" onload='refresh_liste(); refresh_actualite(); refresh_chat();'>
+	 <body style=" background: #aaa;" onload='refresh_liste(), refresh_actualite(), refresh_chat(), refresh_message(),refresh_liste2();'>

@@ -78,6 +78,10 @@ $sessionid=$name->fetch();
 <body onload='refresh_liste(); refresh_actualite();'>
 
     <div class="container">
+	
+		<strong>Profil  </strong> 	<form method="post" action="./traitement/deconnexion.php">
+		<input type="submit" name ="deconnexion" value="Se déconnecter" />
+		</form>
         <div class="row" style="">
             <div class="col-md-3" id="list" >
 
@@ -93,7 +97,20 @@ $sessionid=$name->fetch();
                              <a href="profil.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profil<br /></a>
                           </h4>
                             <p id="photoprofil">
-                                <img src="imag4.png"/ style="width:60%;height:150px;">
+                                <?php
+								
+								$img=$bdd->query('SELECT chemin from image INNER JOIN utilisateur ON image.idutil = utilisateur.id where utilisateur.id =\''.$id.'\' ');
+								$chemin=$img->fetch();
+								
+								if($chemin!=NULL){
+								echo('<img src="');
+								echo $chemin['chemin'];
+								echo('" style="width:60%;height:60%;">');
+								}
+									else{
+										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;">');
+									}
+								?>
                             </p>
                          </div>
                           <div class="col-md-6">
@@ -144,7 +161,7 @@ $sessionid=$name->fetch();
 				</p>
 			<form name = "description" method="post" >
 			
-				<textarea align="left" placeholder="Pas de description renseignée ... " name="description_profil" style="height: 15%; width: 100%"><?php
+				<textarea class="form-control" align="left" placeholder="Pas de description renseignée ... " name="description_profil" style="height: 15%; width: 100%"><?php
 					$rep2 = $bdd->query('SELECT description from utilisateur where id = \''.$id.'\' ');
 					$descr = $rep2->fetch(); 
 					

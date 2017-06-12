@@ -49,18 +49,18 @@ header('Location: ./traitement/deconnexion.php');
 						include('./traitement/smiley.php'); 
 						include('./traitement/video_youtube.php'); 
 						
+
 						while($donnees=$rep->fetch()){
 							
 							echo('<div class="well">');
 							echo('<h2>'.$donnees['titre'].'</h2>');
-							echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
-							
+							echo('<p>'.filtre_texte($donnees['contenu']).'<p>');							
 							isYoutubeVideo($donnees['contenu'],'100%','100%'); 
 						
 							if($donnees['position'] != ''){
 								echo('<p>'.'A '.$donnees['position'].'</p>'); 
 							}
-							echo('</br>');
+							echo('<br>');
 							echo('<p>'.$donnees['date'].'<p>');
 							echo('<p> Par <a href="./profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
 							echo('</div>');
@@ -71,7 +71,7 @@ header('Location: ./traitement/deconnexion.php');
 							
 							<form name="Commenter" action="./traitement/commenter_publication.php?id=<?php echo $_GET['id']; ?>" method="post"> 
 		
-								<input type="textarea" placeholder="Rédigez votre commentaire ici" name="contenu" style="height: 10%; width: 100%"> 
+								<input type="text" placeholder="Rédigez votre commentaire ici" name="contenu" style="height: 10%; width: 100%"> 
 								<input type ="submit" name="Commenter" value="Commenter" >
 								
 							</form>
@@ -97,10 +97,10 @@ header('Location: ./traitement/deconnexion.php');
 								<a href='traitement/deleteCom.php?id=<?php echo $donnees['id']; ?> '>Supprimer</a>
 							<?php
 							}
-							echo('<p>'.'<strong>'.filtre_texte($donnees['contenu']).'</strong>'.'<p>');
-							
+							echo('<p>'.'<strong>'.filtre_texte($donnees['contenu']).'</strong>'.'<p>');							
 							isYoutubeVideo($donnees['contenu'],'100%','100%'); 
 					
+
 							echo('<p>'.$donnees['date'].'<p>');
 							
 							$id_utilisateur = $bdd ->query('SELECT DISTINCT nom,prenom from utilisateur INNER JOIN commentaire ON utilisateur.id  = \''.$donnees['idutil'].'\' ') ; 
@@ -108,7 +108,7 @@ header('Location: ./traitement/deconnexion.php');
 								echo('<p> Commenté par <a href="./profil_autre?id='.$donnees['idutil'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$id['prenom'].' '.$id['nom'].' </a></p>');
 							}
 							echo('</div>');
-							echo '</br>' ; 
+							echo '<br>' ; 
 						}
 						
 						echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>');

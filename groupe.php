@@ -1,4 +1,6 @@
-﻿<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+﻿<?php include('./header.php'); ?>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
 <script language="javascript" type='text/javascript'>
     function auto_deco(){
@@ -65,7 +67,7 @@ setTimeout('refresh_liste()', 3000);
 
 
 
-<?php include('./header.php'); ?>
+
 
     <div class="container">
 	
