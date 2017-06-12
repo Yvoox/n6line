@@ -13,7 +13,7 @@ echo('<div class="well">');
 echo('<h2> Personnes connectés :</h2>');
 $rep = $bdd->query('SELECT id,nom,prenom FROM utilisateur WHERE connecte=1');
 while($donnees=$rep->fetch()){
-	echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' <br /></a>');
+	echo('<a href="profil_autre.php?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' <br /></a>');
 }
 echo('</div>');
 
@@ -24,7 +24,7 @@ $rep = $bdd->query('SELECT id,nom,prenom FROM utilisateur WHERE connecte=0');
 
 while($donnees=$rep->fetch()){
 // echo('<a href="#" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' <br /></a>');
-echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' <br /></a>');
+echo('<a href="profil_autre.php?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' <br /></a>');
 }
 echo('</div>');
 echo('<div class="well">');	

@@ -144,7 +144,7 @@ while($donnees=$rep->fetch()){
 	}
 	echo('</br>');
 	echo('<p>'.$donnees['date'].'<p>');
-	echo('<p> Par <a href="./profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
+	echo('<p> Par <a href="./profil_autre.php?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
 	// echo('<p> Par '.$donnees['prenom'].' '.$donnees['nom'].'<p>');
 	
 	?>

@@ -89,7 +89,7 @@ setTimeout('refresh_liste()', 1500);
                      <div class="col-md-12">
                         <div class="col-md-6">
                           <h4>
-                             <a href="profil.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Groupe<br /></a>
+                             <a href="groupe.php" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Groupe<br /></a>
                           </h4>
                             <p id="photoprofil">
                                 <?php
@@ -379,7 +379,7 @@ setTimeout('refresh_liste()', 1500);
 			if($donnees['position'] != ''){
 				echo('<p>'.'À '.$donnees['position'].'</p>'); 
 			}
-			echo('<p> Par <a href="./profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
+			echo('<p> Par <a href="./profil_autre.php?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
 			echo('</br>');
 			echo('<p>'.$donnees['date'].'<p>');
 			echo('</div>');
