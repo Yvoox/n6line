@@ -122,7 +122,7 @@ header('Location: ./index.php');
          <title>N6LINE</title>
         <link rel="stylesheet" href="./CSS/style.css">
 
-		   
+		    <!-- Bootstrap core CSS -->
     <link href="./CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="./CSS/style.css">
 	
@@ -144,8 +144,6 @@ header('Location: ./index.php');
     </head>
 
 <body onload=' refresh_liste2(),refresh_message();'>
-
-
 <div class="container">
       <header class="row">
         <div id="titre" class="col-sm-12">

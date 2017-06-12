@@ -109,4 +109,4 @@ aria-hidden="true"></span> <span class="caret"></span></a>
     </nav>
 	</header>
 	
-	 <body style=" background: #aaa;" onload='refresh_liste(); refresh_actualite(); refresh_chat();'>
+	 <body style=" background: #aaa;" onload='refresh_liste(), refresh_actualite(), refresh_chat(), refresh_message(),refresh_liste2();'>
