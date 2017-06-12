@@ -4,7 +4,7 @@
     function auto_deco(){
         window.location="./traitement/auto_deco.php";
     }
-    setTimeout("auto_deco()",300000);
+    setTimeout("auto_deco()",600000);
 </script>
 
 
@@ -108,7 +108,7 @@ document.getElementById('actualite').innerHTML = tmp;
 
 xhr_object.send(null);
 
-setTimeout('refresh_actualite()', 3000);
+setTimeout('refresh_actualite()', 300000);
 
 }
 
