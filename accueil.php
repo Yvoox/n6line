@@ -192,9 +192,9 @@ setTimeout('refresh_chat()', 1500);
 							
 							<form name="Publier" action="./traitement/actualite.php" method="post" enctype="multipart/form-data">
 							
-								<input type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-								<input type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-								<input type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+								<input class="form-control" type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+								<input class="form-control" type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+								<input class="form-control" type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 								<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 								<input type ="submit" name="Publier" value="Publier" >
 								

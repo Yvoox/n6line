@@ -151,7 +151,7 @@ setTimeout('refresh_liste()', 1500);
 				</p>
                            <form name = "description" method="post" >
 			
-				<textarea placeholder="Ecrivez quelque chose sur vous ici ... " name="description_profil" style="height: 15%; width: 100%"><?php
+				<textarea class="form-control" placeholder="Ecrivez quelque chose sur vous ici ... " name="description_profil" style="height: 15%; width: 100%"><?php
 					$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
 					$id_utilisateur = $rep->fetch(); 
 					if(isset($_POST['Modifier'])){ 
@@ -197,9 +197,9 @@ setTimeout('refresh_liste()', 1500);
 			<form name="Publier" method="post" enctype="multipart/form-data">
 
 		
-				<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-				<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input class="form-control" type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+				<input class="form-control" type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+				<input class="form-control" type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
 				

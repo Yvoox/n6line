@@ -46,7 +46,7 @@ color:white;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./accueil.php"><img src="./img/image1.png" alt="accueil"></a>
+          <a class="navbar-brand" href="./accueil.php"><img src="./img/logo.png" alt="accueil" height="50" width="70"></a>
         </div>
           <div class="navbar-collapse collapse col-sm-3 col-md-3 navbar-left">
               <form class="navbar-form" action="./resultats_actualites.php" method="post" name="search">

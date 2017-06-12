@@ -142,7 +142,7 @@ setTimeout('refresh_liste()', 1500);
 						
 
 				<form name = "description" method="post" >
-				<textarea align="left" placeholder="Modifier la description du Groupe ... " name="description_groupe" style="height: 15%; width: 100%"><?php
+				<textarea class="form-control" align="left" placeholder="Modifier la description du Groupe ... " name="description_groupe" style="height: 15%; width: 100%"><?php
 						
 					if(isset($_POST['Modifier'])){ 
 						if(!empty($_POST['description_groupe'])){ 
@@ -251,9 +251,9 @@ setTimeout('refresh_liste()', 1500);
                    <div class="well" >
 			<form name="Publier" method="post" enctype="multipart/form-data">
 		
-				<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-				<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input class="form-control" type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+				<input class="form-control" type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+				<input class="form-control" type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
 

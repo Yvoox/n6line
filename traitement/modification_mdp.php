@@ -6,6 +6,27 @@
     catch(Exception $e){
         die('Erreur : '.$e->getMessage()); 
     }
+	
+	
+	
+	
+	    echo('<head>');
+    
+        echo('<meta charset="utf-8">');
+        echo('<title>inscription ancien</title>');
+		echo('<link href="../CSS/bootstrap/css/bootstrap.min.css.map" rel="stylesheet">');
+		echo('<link href="../CSS/bootstrap/css/bootstrap.css.map" rel="stylesheet">');
+		echo('<link href="../CSS/bootstrap/css/bootstrap-theme.min.css.map" rel="stylesheet">');
+		echo('<link href="../CSS/bootstrap/css/bootstrap-theme.css.map" rel="stylesheet">');
+		echo('<link href="../CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">');
+        
+        echo('<link rel="stylesheet" type="text/css" href="../CSS/ins_ancien.css" />');
+        echo('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />');
+        echo('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,700,300" />');
+      
+		
+		echo('</head>');
+	
 
 	
     if(isset($_POST['modifier_mdp'])){ 
@@ -60,9 +81,11 @@
 	
 			if (empty($_POST['ancien_mdp']) || empty($_POST['nouveau_mdp']) || empty($_POST['repetition_mdp'])) {
 				 
-				echo"<script language=\"javascript\">" ; 
-				echo"confirm('Vous devez remplir tous les champs pour pouvoir changer de mot de passe.')";
-				echo"</script>";
+					echo"<script language=\"javascript\">" ; 
+					echo"alert('Vous devez remplir tous les champs pour pouvoir changer de mot de passe.')";
+					echo"</script>";
+				
+
 
 				//header("location:../modification_profil.php");
 
@@ -73,7 +96,7 @@
 		$_POST['ancien_mdp'] = '' ;
 		$_POST['nouveau_mdp'] = ''; 
 		$_POST['repetition_mdp']='';
-		//header("../location:modification_profil.php");
+		echo('<script>window.location="../modification_profil";</script>');
 	}
 	
 

@@ -161,7 +161,7 @@ $sessionid=$name->fetch();
 				</p>
 			<form name = "description" method="post" >
 			
-				<textarea align="left" placeholder="Pas de description renseignée ... " name="description_profil" style="height: 15%; width: 100%"><?php
+				<textarea class="form-control" align="left" placeholder="Pas de description renseignée ... " name="description_profil" style="height: 15%; width: 100%"><?php
 					$rep2 = $bdd->query('SELECT description from utilisateur where id = \''.$id.'\' ');
 					$descr = $rep2->fetch(); 
 					
