@@ -86,8 +86,8 @@ color:white;
 					// echo('<li><font color="red">'.$nb_mess['id_util'].'</font></li>');
 					?>
 					
-              <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+              <li><a href="./groupe.php"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+              <li><a href="./profil.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
 			  
 			  
              
@@ -95,9 +95,7 @@ color:white;
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock" 
 aria-hidden="true"></span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Créer une page</a></li>
-            <li><a href="#">Créer un groupe</a></li>
-            <li><a href="#">Créer un événement </a></li>
+            <li><a href="./traitement/deconnexion.php">Déconnexion</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Signaler un problème</a></li>
             <li><a href="#">Aide</a></li>
