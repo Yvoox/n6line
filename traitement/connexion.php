@@ -14,10 +14,11 @@
                       echo('salut');
 				
 				
-				$req_ok = $bdd->prepare('SELECT id FROM utilisateur WHERE uha = :login and mdp = :pass');
-				$req_ok->execute(array('login' => $_POST['login'], 'pass' => $_POST['pass']));
-				$count_ok= $req_ok->rowCount();
-				if($count_ok > 0) { 
+				$req_ok = $bdd->prepare('SELECT id,mdp FROM utilisateur WHERE uha = :login');
+				$req_ok->execute(array('login' => $_POST['login']));
+				$rez= $req_ok->fetch();
+
+				if(password_verify($_POST['pass'],$rez['mdp'])){
 					/* démarrage d'une session pour stocker les variables login et pass */ 
 					session_start(); 
 					$_SESSION['login'] = $_POST['login']; 

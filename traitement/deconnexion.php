@@ -17,8 +17,13 @@
 		$update = $bdd->query('UPDATE utilisateur set connecte = 0 where uha =\''.$login.'\'');
 		echo ('<p>Vous êtes déconnecté !</p>');	
 		session_destroy();
-		header("location:../index.php");
+		echo('<script>window.location="../index.php";</script>');
 	}
+	
+			$update = $bdd->query('UPDATE utilisateur set connecte = 0 where uha =\''.$login.'\'');
+		echo ('<p>Vous êtes déconnecté !</p>');	
+		session_destroy();
+		echo('<script>window.location="../index.php";</script>');
 	
 	
 

@@ -16,7 +16,7 @@ echo ('Bienvenue '.$accueil['nom'].' '.$accueil['prenom'].' ');
 	
  if(isset($_POST['Publier'])){ 
         if(!empty($_POST['contenu'])){ 
-			 
+
 			
 			
 //			$titre = $bdd->quote($titre);
@@ -37,12 +37,54 @@ echo ('Bienvenue '.$accueil['nom'].' '.$accueil['prenom'].' ');
 			
 			$id_actualite = $bdd ->prepare('SELECT id from actualite where titre = :titre and contenu = :contenu') ; 
 			$id_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu']));
+			$id_act = $id_actualite ->fetch();
 			
+			 if(isset($_FILES['fichier'])){
+				 $fichier = $_FILES['fichier']['name'] ;
+				 echo($fichier);
+				 
+				 
+				 $dossier = '../uploaded/';
+				 $up='./uploaded/';
+	$fichier = basename($_FILES['fichier']['name']); 
+	$taille_maxi = 100000;
+	$taille = filesize($_FILES['fichier']['tmp_name']);
+	$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+	$extension = strrchr($_FILES['fichier']['name'], '.'); 
+	if(!in_array($extension, $extensions)){
+		$erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+	}
+	
+	if($taille>$taille_maxi){
+     $erreur = 'Le fichier est trop gros...';
+	}
+	
+	if(!isset($erreur)){
+		$fichier = strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+		$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 
+     
+		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
+			echo 'Upload effectué avec succès !';
+			$chemin = $up.$fichier;
+			echo '</br>'.$chemin.'</br>' ; 
+			$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,'.$id_act[0].',0,\''.$chemin.'\') ');
+		}
+		else{
+			echo 'Echec de l\'upload !';
+		}
+	}
+	else{
+     
+	 echo $erreur;
+	}
+				 
+				 
+			 }
 			
 			
 			//echo $id_uti[0] ;
-			$id_act = $id_actualite ->fetch();
+
 			
 			
 			$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\',0) '); 
@@ -81,6 +123,18 @@ while($donnees=$rep->fetch()){
 		<a href='./traitement/deleteOnHome.php?id=<?php echo $donnees['idact']; ?> '>Supprimer</a>
 	<?php 
 	}
+	
+	$img=$bdd->query('SELECT chemin from image WHERE idact ='.$donnees['idact'].' ');
+	$chemin=$img->fetch();
+	
+					if($chemin!=NULL){	
+		echo('</br><img src="');
+		echo $chemin['chemin'];
+		echo('" style="width:40%;height:40%;">');
+	}
+								
+
+
 	echo('<h2>'.$donnees['titre'].'</h2>');
 	echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
 	isYoutubeVideo($donnees['contenu'],'100%','50%'); 
@@ -97,7 +151,10 @@ while($donnees=$rep->fetch()){
 		<a href='./commenter.php?id=<?php echo $donnees['idact']; ?> '>Commenter <?php echo '('.count_com($donnees['idact']).')' ; ?> </a>
 	<?php
 	
+
+	
 	echo('</div>');
+
 }
 
 
