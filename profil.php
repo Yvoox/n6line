@@ -117,7 +117,21 @@ setTimeout('refresh_liste()', 1500);
 							echo('<p>Nom : '.$donnees['nom'].'</p>');
 							echo('<p>Prénom : '.$donnees['prenom'].'</p>');
 							echo('<p>Adresse UHA : '.$donnees['uha'].'</p>');
-							echo('<p>Âge : '.$donnees['age'].' ans</p>');
+							function Age($date_naissance)
+							    {
+								$arr1 = explode('/', $date_naissance);
+								$arr2 = explode('/', date('Y/m/d'));
+
+								if(($arr1[1] < $arr2[1]) || (($arr1[1] == $arr2[1]) && ($arr1[2] <= $arr2[2])))
+								return $arr2[0] - $arr1[0];
+
+								return $arr2[0] - $arr1[0] - 1;
+							    }
+
+							    $ma_date_de_naissance = $donnees['date'];
+							    $mon_age = Age($ma_date_de_naissance);
+							    echo('Age : ');
+							    echo $mon_age;
 							echo('<p>Adresse : '.$donnees['adresse'].'</p>');
 						}
 						
