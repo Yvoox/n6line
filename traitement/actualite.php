@@ -27,9 +27,9 @@ echo ('Bienvenue '.$accueil['nom'].' '.$accueil['prenom'].' ');
 			$id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
 			$id_uti = $id_utilisateur->fetch();
 			
-			include('./mots_interdits.php'); 
+			include('./mots_interdits_accueil.php'); 
 			if($existe == FALSE ){ 
-			$insert_actualite = $bdd->prepare('INSERT INTO actualite(titre,contenu,position,fichier,date) VALUES( :titre , :contenu,:position, \'\' ,\''.$time.'\')'); 
+			$insert_actualite = $bdd->prepare('INSERT INTO actualite(titre,contenu,position,fichier,date,mkgroup) VALUES( :titre , :contenu,:position, \'\' ,\''.$time.'\',0)'); 
 			$insert_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu'], 'position' => $_POST['position']));
 			
 
@@ -44,7 +44,7 @@ echo ('Bienvenue '.$accueil['nom'].' '.$accueil['prenom'].' ');
 			$id_act = $id_actualite ->fetch();
 			
 			
-			$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\') '); 
+			$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\',0) '); 
 			
 			echo 'OK!' ; 
 			
@@ -65,18 +65,20 @@ echo ('Bienvenue '.$accueil['nom'].' '.$accueil['prenom'].' ');
 	
 	
 echo('<h1> Les actualités :</h1>');
-$rep = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id ORDER BY date desc');
+$rep = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id WHERE mkgroup = 0 ORDER BY date desc');
 
-			$id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
-			$id_uti = $id_utilisateur->fetch();
+$id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
+$id_uti = $id_utilisateur->fetch();
 			
-		include('./smiley.php'); 
+include('./smiley.php'); 
+include('nb_coms.php'); 
+
 while($donnees=$rep->fetch()){
 	echo('<div class="well">');
-		if($donnees['id'] == $id_uti[0]){
-		?>	
-			<a href='./traitement/deleteOnHome.php?id=<?php echo $donnees['idact']; ?> '>Supprimer</a>
-		<?php 
+	if($donnees['id'] == $id_uti[0]){
+	?>	
+		<a href='./traitement/deleteOnHome.php?id=<?php echo $donnees['idact']; ?> '>Supprimer</a>
+	<?php 
 	}
 	echo('<h2>'.$donnees['titre'].'</h2>');
 	echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
@@ -85,7 +87,13 @@ while($donnees=$rep->fetch()){
 	}
 	echo('</br>');
 	echo('<p>'.$donnees['date'].'<p>');
-	echo('<p> Par '.$donnees['prenom'].' '.$donnees['nom'].'<p>');
+	echo('<p> Par <a href="./profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
+	// echo('<p> Par '.$donnees['prenom'].' '.$donnees['nom'].'<p>');
+	
+	?>
+		<a href='./commenter.php?id=<?php echo $donnees['idact']; ?> '>Commenter <?php echo '('.count_com($donnees['idact']).')' ; ?> </a>
+	<?php
+	
 	echo('</div>');
 }
 

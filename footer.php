@@ -2,7 +2,7 @@
 
 <footer>
     <!-- footer = pied de page -->
-    <p>2017. Créé par ...</p>
+    <p>2017. Créé par n6Line</p>
 	
 </footer>
 

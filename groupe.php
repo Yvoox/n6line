@@ -1,4 +1,7 @@
+
+
 <?php include('./header.php'); ?>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
 <script language="javascript" type='text/javascript'>
@@ -62,143 +65,39 @@ setTimeout('refresh_liste()', 3000);
 
 </script>
 
-<script>
-function refresh_actualite()
 
-{
 
-var xhr_object = null;
 
-if(window.XMLHttpRequest)
-
-{ // Firefox
-
-xhr_object = new XMLHttpRequest();
-
-}
-
-else if(window.ActiveXObject)
-
-{ // Internet Explorer
-
-xhr_object = new ActiveXObject('Microsoft.XMLHTTP');
-
-}
-
-var method = 'GET';
-
-var filename = './traitement/actualite.php';
-
-xhr_object.open(method, filename, true);
-
-xhr_object.onreadystatechange = function()
-
-{
-
-if(xhr_object.readyState == 4)
-
-{
-
-var tmp = xhr_object.responseText;
-
-document.getElementById('actualite').innerHTML = tmp;
-
-}
-
-}
-
-xhr_object.send(null);
-
-setTimeout('refresh_actualite()', 3000);
-
-}
-
-</script>
-<script>
-function refresh_chat()
-
-{
-
-var xhr_object = null;
-
-if(window.XMLHttpRequest)
-
-{ // Firefox
-
-xhr_object = new XMLHttpRequest();
-
-}
-
-else if(window.ActiveXObject)
-
-{ // Internet Explorer
-
-xhr_object = new ActiveXObject('Microsoft.XMLHTTP');
-
-}
-
-var method = 'GET';
-
-var filename = './traitement/chat.php';
-
-xhr_object.open(method, filename, true);
-
-xhr_object.onreadystatechange = function()
-
-{
-
-if(xhr_object.readyState == 4)
-
-{
-
-var tmp = xhr_object.responseText;
-
-document.getElementById('chat').innerHTML = tmp;
-
-}
-
-}
-
-xhr_object.send(null);
-
-setTimeout('refresh_chat()', 1500);
-
-}
-
-</script>
     <div class="container">
-
+ 
 		 <strong>Profil  </strong> 	<form method="post" action="./traitement/deconnexion.php">
 		<input type="submit" name ="deconnexion" class="btn btn-xs btn-danger" value="Se déconnecter" />
 		</form>
         <div class="row" style="margin-top:0px;">
 			<div  class="col-md-3">
 				<div id="list">
-				</div>	
-				<div id="groupe">
-					<?php include('./traitement/liste_groupe.php'); ?>
+	
 				</div>
 			</div>
+				
 				<div class="col-md-7">
 					<div class="well" >
-						<div id ="Publication" class="row">
+						<div id ="groupes" class="row">
+						<?php include('./traitement/liste_groupe_page.php'); ?>
+					<div class="well" > 							
+					<form name="Créer un groupe" action="./traitement/creation_groupe.php" method="post">
 							
-							<form name="Publier" action="./traitement/actualite.php" method="post">
-							
-								<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-								<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-								<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 60px; width: 100%"> 
-								<input type ="submit" name="Publier" value="Publier" >
-								<input type ="submit" name="Photo/video" value="Photo/vidéo" >
+								<input type="textarea" placeholder="Un nom" name="nom" style="height: 5%; width: 100%">
+								<input type="textarea" placeholder="Description du groupe" name="contenu" style="height: 60px; width: 100%"> 
+								<input type ="submit" name="Creer" value="Creer" >
+								<input type ="submit" name="Photo" value="Photo" >
 								
-							</form>
-			
-						</div>
-					<div class="well" id="actualite"> </div>
+							</form></div>
 					</div>
 				</div>
 				
-				<div class="col-md-2">
+	   </div>
+            <div class="col-md-2">
 					
 						<div class="well"><h5> SPONSORISE</h5><p>
 							<img src="./img/imag4.png" style="width:100%"/></p>
@@ -210,8 +109,7 @@ setTimeout('refresh_chat()', 1500);
 						<h6> En6Line, 2016-2017</h6>
 					
 				</div>
-	</div>
-
+    </div>
         
 
     <!-- Bootstrap core JavaScript

@@ -1,12 +1,4 @@
-<?php
-    try{ 
-        $bdd = new PDO('mysql:host=localhost;dbname=n6line;charset=utf8','root',''); 
-    }
-    catch(Exception $e){
-        die('Erreur : '.$e->getMessage()); 
-    }
-?>
-
+<?php include('/header.php'); ?>
 <script>
 function refresh_liste()
 
@@ -54,20 +46,13 @@ document.getElementById('list').innerHTML = tmp;
 
 xhr_object.send(null);
 
-setTimeout('refresh_liste()', 100);
+setTimeout('refresh_liste()', 1500);
 
 }
 
 </script>
 
-
-<! DOCTYPE html>
-<html lang="fr">
-
-<head>
-	
-	<?php 
-	session_start(); 
+<?php 
 	$login = $_SESSION['login'] ;
 	
 	$req = $bdd->query('SELECT nom,prenom from utilisateur where uha =\''.$login.'\' ');  
@@ -78,40 +63,50 @@ setTimeout('refresh_liste()', 100);
 	
 	
 	?>
-	
-    <meta charset="utf-8" />
-	<link rel="stylesheet" href="./CSS/style_profil.css" />
-	
-</head>
 
 <body onload='refresh_liste(); refresh_actualite();'>
 
-	<header>
-		<h1><a href="profil.php">
-		
-		<?php 
-			echo '<p>'.$donnees['prenom']." ".$donnees['nom'].'</p>' ; 
-		?>
-		
-		</a></h1>
-		
-	</header>
+    <div class="container">
 	
-	<section id="contenu">
-	
-		<section id="accueil">
-			
-			<div id="accueil_gauche">
-		
-				<p>
-				<img src="./img/profilinconnu.jpg" width="200px" height="250px" title="photo de profil" alt="photo de profil" />
-				</p>
+	<strong> Profil </strong> <form method="post" action="./traitement/deconnexion.php">
+		<input type="submit" name ="deconnexion" class="btn btn-xs btn-danger" value="Se déconnecter" />
+        </form>
+        <div class="row" >
+            <div class="col-md-3" >
+                	<div id="list">
+				   
+					
+				</div>
 				
-			</div>
-			
-			<div id="accueil_centre">
-			
-				<ul>
+                	<div id="groupe">
+					<?php include('./traitement/liste_groupe.php'); ?>
+				</div>
+      </div>
+           
+            <div class="col-md-7" >
+                 <div class="well">  
+                    <div class="row">
+                     <div class="col-md-12">
+                        <div class="col-md-6">
+                          <h4>
+                             <a href="profil.php" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php
+						$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
+						$id_utilisateur = $rep->fetch(); 
+						$rep = $bdd->query('SELECT * FROM utilisateur where id=\''.$id_utilisateur[0].'\' ');
+						
+						
+						while($donnees=$rep->fetch()){
+							echo($donnees['prenom'].'</br>');
+						}
+						
+						?> </a>
+                          </h4>
+                            <p id="photoprofil">
+                                <img src="imag4.png"/ style="width:60%;height:150px;">
+                            </p>
+                         </div>
+                          <div class="col-md-6">
+                           <p>
 				
 					<?php
 						$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
@@ -121,29 +116,16 @@ setTimeout('refresh_liste()', 100);
 						
 						while($donnees=$rep->fetch()){
 	
-							echo('<li>'.'Nom : '.$donnees['nom'].'</li>');
-							echo('<li>'.'Prénom : '.$donnees['prenom'].'</li>');
-							echo('<li>'.'Adresse UHA : '.$donnees['uha'].'</li>');
-							echo('<li>'.'Âge : '.$donnees['age'].'</li>');
-							echo('<li>'.'Adresse : '.$donnees['adresse'].'</li>');
+							echo('Nom : '.$donnees['nom'].'</br>');
+							echo('Prénom : '.$donnees['prenom'].'</br>');
+							echo('Adresse UHA : '.$donnees['uha'].'</br>');
+							echo('Âge : '.$donnees['age'].' ans</br>');
+							echo('Adresse : '.$donnees['adresse'].'</br>');
 						}
-					
-					?>	
-				</ul>
-					
-			</div>
-			
-			<div id="accueil_droite">
-			
-				<div id="logo_haut">
-					<p>
-						<img src="./img/logo1.jpg" width="150px" height="100px" title="logo1" alt="logo1" />
-					</p>
-				</div>
-				
-				<div id="logo_bas">
-				
-					<p> 
+						
+						?>
+						</p>
+						<p>
 						<?php
 							/* Sélection de la fonction de la personne, ou affichage de la promo si étudiant */ 
 							
@@ -151,21 +133,15 @@ setTimeout('refresh_liste()', 100);
 							$id_utilisateur = $rep->fetch(); 
 							$rep2 = $bdd->query('SELECT promotion from Etudiant where id=\''.$id_utilisateur[0].'\' ');
 							$promo = $rep2->fetch(); 
-							echo $promo[0] ; 
+							echo (''.$promo[0].'') ; 
 							
 							$rep3 = $bdd->query('SELECT fonction from administration where id=\''.$id_utilisateur[0].'\' ');
 							$fonction = $rep3->fetch();
-							echo $fonction[0]; 
-							
+							echo (''.$fonction[0].''); 
 						?>
-					</p>
-					
-					
-					<p>
+						</p>
+						<p>
 						<?php
-							
-							/* affichage de la filière de la personne si étudiant */ 
-							
 							$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
 							$id_utilisateur = $rep->fetch(); 
 							
@@ -173,20 +149,9 @@ setTimeout('refresh_liste()', 100);
 							$filiere= $rep2->fetch(); 
 							
 							echo $filiere[0];
-						?>
-					</p>
-					
-					<p><a href="./traitement/modification_profil.php">Modifier le profil</a></p>
-					
-				</div>
-				
-			</div>
-			
-		</section>
-		
-		<section id="description">
-		
-			<form name = "description" method="post" >
+					?>	
+				</p>
+                           <form name = "description" method="post" >
 			
 				<textarea align="left" placeholder="Ecrivez quelque chose sur vous ici ... " name="description_profil" style="height: 15%; width: 100%"><?php
 					$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
@@ -206,79 +171,60 @@ setTimeout('refresh_liste()', 100);
 				<input type="submit" name="Modifier" value="Modifier" >
 				
 			</form>
-			
-			
-		</section>
-		
-			
-		<div id ="Publication" >
-			<form name="Publier" method="post">
+
+                          </div>
+                        </div>
+                     </div>  
+                </div>
+                  <div class="well"> 
+                    <a href="modification_mdp.php">Paramètres du compte</a><br/>
+                    <a href="./traitement/modification_profil.php">Modifier votre profil</a><br/>
+                   </div>
+                   <div class="well" id ="Publication">
+			<form name="Publier" method="post" enctype="multipart/form-data">
+
 		
 				<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
 				<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 60px; width: 100%"> 
 				<input type ="submit" name="Publier" value="Publier" >
-				<input type ="submit" name="Photo/video" value="Photo/vidéo" >
-				
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Fichier : <input type="file" name="fichier"> <!-- onchange="this.form.submit()" -->
 				
 			</form>
-		</div>
-		
-		
 
-		<div id="list">
-		// <?php
-
-			// echo('<h1> Amis connectés :</h1>');
-			// $req = $bdd->query('SELECT nom,prenom from utilisateur where uha =\''.$login.'\' ');  
-			// $rep = $bdd->query('SELECT nom,prenom FROM utilisateur WHERE connecte=1 AND uha !=\''.$login.'\' '); 
-			
-			// echo('<ul>');
-		
-			// while($donnees=$rep->fetch()){
-				// echo('<li>'.$donnees['nom'].' '.$donnees['prenom'].'</li>');
-				// }
-			// echo('</ul>');
-
-			// echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>');
-
-			// echo('<h1> Ami hors ligne :</h1>');
-			// $rep = $bdd->query('SELECT nom,prenom FROM utilisateur WHERE connecte=0');
-			// echo('<ul>');
-		
-			// while($donnees=$rep->fetch()){
-				// echo('<li>'.$donnees['nom'].' '.$donnees['prenom'].'</li>');
-			// }
-			// echo('</ul>');
-		// ?>
-		</div>
-	
-		<div id="actualite">
-		<?php
+                   </div>
+            <div class="well" >
+               <?php
 			if(isset($_POST['Publier'])){ 
 				if(!empty($_POST['contenu'])){ 
-				echo '<p> OK ! </p>' ; 
 				
-			 
+				
 				$contenu = $_POST['contenu'];
 				$titre = $_POST['titre']; 
 				$time = date("Y-m-d H:i:s");
+				$fichier = $_FILES['fichier']['name'] ; 
 				
 				include('./traitement/mots_interdits.php'); 
+
 			if($existe == FALSE ){ 
-			$insert_actualite = $bdd->prepare('INSERT INTO actualite(titre,contenu,position,fichier,date) VALUES( :titre , :contenu,:position, \'\' ,\''.$time.'\')'); 
-			$insert_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu'], 'position' => $_POST['position']));
-				$id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
+			$insert_actualite = $bdd->prepare('INSERT INTO actualite(titre,contenu,position,fichier,date,mkgroup) VALUES( :titre , :contenu,:position, :fichier ,\''.$time.'\',0)'); 
+			$insert_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu'], 'position' => $_POST['position'],'fichier' =>$_FILES['fichier']['name'] ));
+			include('./traitement/upload.php'); 
+        $id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
 						$id_actualite = $bdd ->prepare('SELECT id from actualite where titre = :titre and contenu = :contenu') ; 
+
 			$id_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu']));
 			
 				$id_uti = $id_utilisateur->fetch();
 				$id_act = $id_actualite ->fetch(); 
 			
-				$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\') '); 
+
+				$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\',0) '); 
 			
-				header("location:profil.php"); 
+				//header("location:profil.php"); 
+
 			}
+			
 			}
 		
 			else{
@@ -291,24 +237,52 @@ setTimeout('refresh_liste()', 100);
 		
 		
 		echo('<h2> Mes publications </h2>');
-		$rep = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where utilisateur.id = \''.$id_utilisateur[0].'\' ORDER BY date desc');
+								$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
+						$id_utilisateur = $rep->fetch(); 
+		$rep = $bdd->query('SELECT * FROM actualite INNER JOIN post on actualite.id = post.idact INNER JOIN utilisateur on post.iduti = utilisateur.id where utilisateur.id = \''.$id_utilisateur[0].'\' AND actualite.mkgroup = 0 ORDER BY date desc');
 
+		if (isset($_FILES['fichier'])){
+			echo $_FILES['fichier']['name'] ; 
+		}
+		
 		include('./traitement/smiley.php'); 
+		include('traitement/nb_coms.php'); 
+		
 		while($donnees=$rep->fetch()){
-			echo('<div class="div_news">');
+			echo('<div class="well">');
 			$id_actualite = $bdd ->query('SELECT id from actualite where contenu = \''.$donnees['contenu'].'\' and titre = \''.$donnees['titre'].'\' ') ; 
 			$id = $id_actualite->fetch(); 
-						?>	
+			//echo $id[0]; 
+			
+			// $f = $bdd->query('SELECT fichier FROM actualite INNER JOIN image ON image.idact = actualite.id AND actualite.id = \''.$id[0].'\' ' ); 
+			// $name_file = $f ->fetch(); 
+			//echo $name_file[0];
+			
+			
+			?>	
 				<a href='./traitement/deleteOnProfile.php?id=<?php echo $id[0]; ?> '>Supprimer</a>
 			<?php 
-
 			echo('<h2>'.$donnees['titre'].'</h2>');
+			
+			
+			/*if($donnees['fichier'] != ''){
+				echo "<img src="; 
+				echo './uploaded/'; 
+				echo ''.$donnees['contenu'].''; 
+				echo 'width="200" height="200">';   
+			}*/
+			
 			echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
 			if($donnees['position'] != ''){
 				echo('<p>'.'À '.$donnees['position'].'</p>'); 
 			}
 			echo('</br>');
 			echo('<p>'.$donnees['date'].'<p>');
+			?>
+			
+				<a href='./traitement/commenter.php?id=<?php echo $id[0]; ?> '>Commenter <?php echo '('.count_com($id[0]).')' ; ?> </a>
+			
+			<?php
 			echo('</div>');
 }
 
@@ -316,25 +290,30 @@ setTimeout('refresh_liste()', 100);
 		echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>');
 	
 	?>
-		
-		</div>
-	
-		<div id="groupe">
-			<?php include('./traitement/liste_groupe.php'); ?>
-		</div>
-	
-		<form name="x" action="./chat.php" method="post">
-			<input type="submit" value="Messagerie" />
-		</form>
 
-		<form method="post" action="./traitement/deconnexion.php">
-			<input type="submit" name ="deconnexion" value="Se déconnecter" />
-		</form>
-		
-		
-		
-		
-	</section>
-<?php 
-	include('footer.php'); 
-?>
+            </div>
+            
+         </div>
+            <div class="col-md-2">
+					
+						<div class="well"><h5> SPONSORISE</h5><p>
+							<img src="./img/imag4.png" style="width:100%"/></p>
+							<p>
+							Retrouver nous sur <a href="http://iariss.fr" target="_blank">Iariss </a>pour plus d'infos
+							</p>
+					
+						</div>
+						<h6> En6Line, 2016-2017</h6>
+					
+				</div>
+        
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
+
