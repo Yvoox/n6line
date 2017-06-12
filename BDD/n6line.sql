@@ -609,10 +609,9 @@ CREATE TABLE `utilisateur` (
   `@xmpp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `nom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `prenom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `age` int(11) NOT NULL,
+  `date` date NOT NULL,
   `adresse` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `mdp` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `mdp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `connecte` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -620,11 +619,10 @@ CREATE TABLE `utilisateur` (
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `uha`, `@xmpp`, `nom`, `prenom`, `age`, `adresse`, `description`, `mdp`, `connecte`) VALUES
-(1, 'alexandre@uha.fr', 'alexandre@xmpp.fr', 'colicchio', 'alexandre', 23, '19 rue des VERGERS 68100 Mulhouse', '', '$2y$10$aBTaOwVjD4CFaG7Tl1p0ROOkmvzIgIFhddMfZfh0zhSiNJ0awb2i.', 0),
-(456, 'jean@uha.fr', 'jean@xmpp.fr', 'fdqbfsfd', 'jean', 23, '58 rue des VERGERS 68100 Mulhouse', 'ydwhdgfhxfhg', '$2y$10$pR7.6ERp1HoXF1ILhzmyiefxC0DbRn3hRehCiTl57x3ReuqNE48YG', 0),
-(2, 'alexandre.colicchio@uha.fr', 'alexandre.colicchio@xmpp.fr', 'colicchio', 'Alexandre', 23, '18 rue de l\'économie 68200 mulhouse', 'gsfqgqsgsdgsdq', '$2y$10$qzw/Zr1XxFN8a3fCdjy7IORZKBCiHhp7voNTO.v7g7/stQu3rg/6W', 1);
-
+INSERT INTO `utilisateur` (`id`, `uha`, `@xmpp`, `nom`, `prenom`, `date`, `adresse`, `mdp`, `connecte`) VALUES
+(1, 'alexandre@uha.fr', 'alexandre@xmpp.fr', 'colicchio', 'alexandre', '1996-10-20', '19 rue des VERGERS 68100 Mulhouse', 'gfbfds45gs26', 0),
+(456, 'jean@uha.fr', 'jean@xmpp.fr', 'fdqbfsfd', 'jean', '1990-06-15', '58 rue des VERGERS 68100 Mulhouse', 'wvdf57', 0),
+(2, 'alexandre.colicchio@uha.fr', 'alexandre.colicchio@xmpp.fr', 'colicchio', 'Alexandre', '1994-05-15', '18 rue de l\'économie 68200 mulhouse', 'azerty', 0);
 --
 -- Index pour les tables exportées
 --
