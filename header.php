@@ -77,7 +77,7 @@ color:white;
             <li><a href="./profil.php">Profil</a>.</li>
             <li><a href="./chat.php">Messagerie</a></li>
             <li><a href="./groupe.php">Groupe</a></li>
-             <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+             <li><a href="./chat.php"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
 			 <?php $id=$bdd->query('SELECT id FROM utilisateur where uha= \''.$_SESSION['login'].'\'');
 					$idutil=$id->fetch();
 			 $nb = $bdd->query('SELECT count(idutil) as id_util FROM notificationmessage INNER JOIN utilisateur ON notificationmessage.idutil = utilisateur.id where utilisateur.id ='.$idutil['id'].' AND notificationmessage.vu=0');
@@ -109,4 +109,4 @@ aria-hidden="true"></span> <span class="caret"></span></a>
     </nav>
 	</header>
 	
-	 <body style=" background: #aaa;" onload='refresh_liste(); refresh_actualite(); refresh_chat();'>
+	 <body style=" background: #aaa;" onload='refresh_liste(), refresh_actualite(), refresh_chat(), refresh_message(),refresh_liste2();'>

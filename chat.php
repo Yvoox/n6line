@@ -1,4 +1,7 @@
+
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
 <script>
 function refresh_liste2()
 
@@ -119,8 +122,10 @@ header('Location: ./index.php');
          <title>N6LINE</title>
         <link rel="stylesheet" href="./CSS/style.css">
 
-		    <!-- Bootstrap core CSS -->
+		   
     <link href="./CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./CSS/style.css">
+	
       <style>
           .chat{
               position:fixed;
@@ -139,38 +144,68 @@ header('Location: ./index.php');
     </head>
 
 <body onload=' refresh_liste2(),refresh_message();'>
+
+
 <div class="container">
-	<div id="list" class="col-md-3">
-
-	</div>
-
-	<div class="col-md-9">
-		<div id="message">
-
-		</div> 
-		<div id="texte">
-		<form method="post" action="./traitement/send.php">
+      <header class="row">
+        <div id="titre" class="col-sm-12">
+          Messagerie
+        </div>
+      </header>
+	  
+      <div class="row">
+	  
+        <nav class="col-sm-3">
+          <div id="list">
+			</div>
+        </nav>
+		
+        <section class="col-sm-9">
+          <div id="message"> 
+		  </div>
+		  
+		<div class="row">
+		  
+            <article class="col-md-9">
+				<div id="texte">
+					<form method="post" action="./traitement/send.php">
 						
-							<table>
-							<tr>
-								<td><p><label for="message">Message:</label><textarea name="message" rows="5" cols="50"></textarea></p><input type="submit" name="envoyer" value="envoyer"></td>					                
-							</tr>              
-							</table>	
+					<table>
+						<tr>
+							<td><p><textarea type="text" name="message" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
+							<td><input style="cursor:pointer" class="btn btn-success btn btn-success" type="submit" name="envoyer" value="envoyer"></td>
+							<td><input style="cursor:pointer" class="btn btn-sucess btn btn-success" type="submit" name="joindre" value="joindre un fichier"></td>
+						</tr>              
+					</table>	
 					</form>
-		</div>
-	</div>
-</div>
+				</div>
+            </article>
+			
+            <aside class="col-md-3">
+				<form name="x" action="./accueil.php" method="post">
+					<input style="cursor:pointer" class="btn btn-success btn btn-success" type="submit" value="Accueil">
+				</form>
+
+				<form method="post" action="./traitement/deconnexion.php">
+					<input style="cursor:pointer" class="btn btn-info"  type="submit" name ="deconnexion" value="Se déconnecter" />
+				</form> 
+            </aside>
+			
+          </div>
+        </section>
+      </div>
+      <footer class="row">
+        <div class="col-sm-12">
+          Développé par le groupe n6line.
+        </div>
+      </footer>
+    </div>
+
+
 
 <?php
 if(isset($_GET['valeur'])){
 setcookie('variable',$_GET['valeur'],time()+3600) ; }?>
 
-<form name="x" action="./accueil.php" method="post">
-<input type="submit" value="Accueil">
-</form>
-
-<form method="post" action="./traitement/deconnexion.php">
-	<input type="submit" name ="deconnexion" value="Se déconnecter" />
-</form>
-
 </body>
+</html>

@@ -22,10 +22,11 @@ $desti=$dtemp->fetch();
 $stemp = $bdd->query('SELECT nom,prenom,id,connecte FROM utilisateur WHERE nom = '.$desti['nom'].' ');	
  //$statut = $stemp->fetch();
 // echo($desti['nom']);
-echo('<h1> '.$desti['nom'].' '.$desti['prenom'].'</h1>');
+echo('<h1 id = nomprenom> '.$desti['nom'].' '.$desti['prenom'].'</h1>');
 
-if($desti['connecte']==1) echo('Connecté');
-else echo('Déconnecté');
+
+if($desti['connecte']==1) echo('<p id=statut>'.('Connecté').'<p>');
+else echo('<p id=statut>'.('Déconnecté').'<p>');
 $mess = $bdd->query('SELECT message.contenu,message.date FROM message INNER JOIN messtrans ON message.id = messtrans.idmessage WHERE (messtrans.idexp = '.$id_uti['id'].' AND messtrans.iddesti = '.$id.') OR (messtrans.idexp = '.$id.' AND messtrans.iddesti = '.$id_uti['id'].') ORDER BY message.date ASC');
 
 include('./smiley.php'); 
@@ -33,12 +34,14 @@ include('./video_youtube.php');
 
 while($donnees=$mess->fetch()){
 	echo('<div class="mess">');
-	echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
+
+	echo('<p id = contenuemessage>'.filtre_texte($donnees['contenu']).'<p>');
 	
 	isYoutubeVideo($donnees['contenu'],'50%','20%'); 
 	
+
 	echo('</br>');
-	echo('<p>'.$donnees['date'].'<p>');
+	echo('<p id=date>'.$donnees['date'].'<p>');
 	echo('</div>');
 	$notif_valid=$bdd->query('UPDATE notificationmessage set vu=1 where idutil='.$id_uti['id'].' ');
 }

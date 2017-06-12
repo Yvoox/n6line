@@ -49,12 +49,12 @@ header('Location: ./traitement/deconnexion.php');
 						include('./traitement/smiley.php'); 
 						include('./traitement/video_youtube.php'); 
 						
+
 						while($donnees=$rep->fetch()){
 							
 							echo('<div class="well">');
 							echo('<h2>'.$donnees['titre'].'</h2>');
-							echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
-							
+							echo('<p>'.filtre_texte($donnees['contenu']).'<p>');							
 							isYoutubeVideo($donnees['contenu'],'100%','100%'); 
 						
 							if($donnees['position'] != ''){
@@ -97,10 +97,10 @@ header('Location: ./traitement/deconnexion.php');
 								<a href='traitement/deleteCom.php?id=<?php echo $donnees['id']; ?> '>Supprimer</a>
 							<?php
 							}
-							echo('<p>'.'<strong>'.filtre_texte($donnees['contenu']).'</strong>'.'<p>');
-							
+							echo('<p>'.'<strong>'.filtre_texte($donnees['contenu']).'</strong>'.'<p>');							
 							isYoutubeVideo($donnees['contenu'],'100%','100%'); 
 					
+
 							echo('<p>'.$donnees['date'].'<p>');
 							
 							$id_utilisateur = $bdd ->query('SELECT DISTINCT nom,prenom from utilisateur INNER JOIN commentaire ON utilisateur.id  = \''.$donnees['idutil'].'\' ') ; 

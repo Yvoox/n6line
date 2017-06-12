@@ -87,7 +87,21 @@ setTimeout('refresh_liste()', 1500);
                              <a href="profil.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profil<br /></a>
                           </h4>
                             <p id="photoprofil">
-                                <img src="imag4.png"/ style="width:60%;height:150px;">
+
+							<?php
+								
+								$img=$bdd->query('SELECT chemin from image INNER JOIN utilisateur ON image.idutil = utilisateur.id where utilisateur.uha =\''.$login.'\' ');
+								$chemin=$img->fetch();
+								
+								if($chemin!=NULL){
+								echo('<img src="');
+								echo $chemin['chemin'];
+								echo('" style="width:60%;height:60%;">');
+								}
+									else{
+										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;">');
+									}
+								?>
                             </p>
                          </div>
                           <div class="col-md-6">
@@ -163,8 +177,21 @@ setTimeout('refresh_liste()', 1500);
                 </div>
                   <div class="well"> 
                     <a href="#">Paramètres du compte</a><br/>
-                    <a href="#">Changer votre photo de profil</a><br/>
-                    <a href="./traitement/modification_profil.php">Modifier</a><br/>
+                   <!-- <a href="./traitement/photo_profil.php">Changer votre photo de profil</a><br/>-->
+                    <a href="./traitement/modification_profil.php">Modifier</a><br/> 
+					<form name="changement" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Changer de photo de profil <input type="file" name="fichier">
+					<input type ="submit" name="Changer" value="Changer" >
+					</form>
+					
+					<?php
+					if(isset($_POST['Changer'])){ 
+						$fichier = $_FILES['fichier']['name'] ;
+						include('./traitement/upload_profil.php');
+						
+					}
+					?>
+					
                    </div>
                    <div class="well" id ="Publication">
 				   
@@ -174,8 +201,9 @@ setTimeout('refresh_liste()', 1500);
 				<input type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
 				<input type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
 				<input type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
-				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Fichier : <input type="file" name="fichier"> <!-- onchange="this.form.submit()" -->
+				
 				
 			</form>
 
@@ -196,7 +224,7 @@ setTimeout('refresh_liste()', 1500);
 			if($existe == FALSE ){ 
 			$insert_actualite = $bdd->prepare('INSERT INTO actualite(titre,contenu,position,fichier,date,mkgroup) VALUES( :titre , :contenu,:position, :fichier ,\''.$time.'\',0)'); 
 			$insert_actualite->execute(array('titre' => $_POST['titre'], 'contenu' => $_POST['contenu'], 'position' => $_POST['position'],'fichier' =>$_FILES['fichier']['name'] ));
-			include('./traitement/upload.php'); 
+			//include('./traitement/upload.php'); 
         $id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
 						$id_actualite = $bdd ->prepare('SELECT id from actualite where titre = :titre and contenu = :contenu') ; 
 
@@ -204,6 +232,50 @@ setTimeout('refresh_liste()', 1500);
 			
 				$id_uti = $id_utilisateur->fetch();
 				$id_act = $id_actualite ->fetch(); 
+			
+			
+			if(isset($_FILES['fichier'])){
+				 $fichier = $_FILES['fichier']['name'] ;
+				 echo($fichier);
+				 
+				 
+				 $dossier = './uploaded/';
+
+	$fichier = basename($_FILES['fichier']['name']); 
+	$taille_maxi = 100000;
+	$taille = filesize($_FILES['fichier']['tmp_name']);
+	$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+	$extension = strrchr($_FILES['fichier']['name'], '.'); 
+	if(!in_array($extension, $extensions)){
+		$erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+	}
+	
+	if($taille>$taille_maxi){
+     $erreur = 'Le fichier est trop gros...';
+	}
+	
+	if(!isset($erreur)){
+		$fichier = strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+		$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+
+     
+		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
+			echo 'Upload effectué avec succès !';
+			$chemin = $dossier.$fichier;
+			echo '</br>'.$chemin.'</br>' ; 
+			$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,'.$id_act[0].',0,\''.$chemin.'\') ');
+		}
+		else{
+			echo 'Echec de l\'upload !';
+		}
+	}
+	else{
+     
+	 echo $erreur;
+	}
+				 
+				 
+			 }
 			
 
 				$insert_post = $bdd->query('INSERT INTO post VALUES(\''.$id_uti[0].'\',\''.$id_act[0].'\',0) '); 
@@ -244,6 +316,16 @@ setTimeout('refresh_liste()', 1500);
 			?>	
 				<a href='./traitement/deleteOnProfile.php?id=<?php echo $id[0]; ?> '>Supprimer</a>
 			<?php 
+			
+				$img=$bdd->query('SELECT chemin from image WHERE idact ='.$donnees['idact'].' ');
+	$chemin=$img->fetch();
+	
+					if($chemin!=NULL){	
+		echo('</br><img src="');
+		echo $chemin['chemin'];
+		echo('" style="width:40%;height:40%;">');
+	}
+			
 			echo('<h2>'.$donnees['titre'].'</h2>');
 			
 			
