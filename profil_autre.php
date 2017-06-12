@@ -78,10 +78,6 @@ $sessionid=$name->fetch();
 <body onload='refresh_liste(); refresh_actualite();'>
 
     <div class="container">
-	
-		<strong>Profil  </strong> 	<form method="post" action="./traitement/deconnexion.php">
-		<input type="submit" name ="deconnexion" value="Se déconnecter" />
-		</form>
         <div class="row" style="">
             <div class="col-md-3" id="list" >
 
@@ -97,20 +93,7 @@ $sessionid=$name->fetch();
                              <a href="profil.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profil<br /></a>
                           </h4>
                             <p id="photoprofil">
-                                <?php
-								
-								$img=$bdd->query('SELECT chemin from image INNER JOIN utilisateur ON image.idutil = utilisateur.id where utilisateur.id =\''.$id.'\' ');
-								$chemin=$img->fetch();
-								
-								if($chemin!=NULL){
-								echo('<img src="');
-								echo $chemin['chemin'];
-								echo('" style="width:60%;height:60%;">');
-								}
-									else{
-										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;">');
-									}
-								?>
+                                <img src="imag4.png"/ style="width:60%;height:150px;">
                             </p>
                          </div>
                           <div class="col-md-6">
