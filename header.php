@@ -35,6 +35,10 @@ color:white;
   
   </head>
 
+
+	
+	 <body style=" background: #aaa;" onload='refresh_liste(), refresh_actualite(), refresh_chat(), refresh_message(),refresh_liste2();'>
+	 
 <header>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -106,5 +110,3 @@ aria-hidden="true"></span> <span class="caret"></span></a>
       </div>
     </nav>
 	</header>
-	
-	 <body style=" background: #aaa;" onload='refresh_liste(), refresh_actualite(), refresh_chat(), refresh_message(),refresh_liste2();'>
