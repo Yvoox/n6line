@@ -24,10 +24,10 @@
 								if($chemin!=NULL){
 								echo('<img src="');
 								echo $chemin['chemin'];
-								echo('" style="width:20%;height:20%;">');
+								echo('" style="width:20%;height:20%;" alt="groupe">');
 								}
 									else{
-										echo('<img src="./uploaded/defaut.jpg" style="width:20%;height:20%;">');
+										echo('<img src="./uploaded/defaut.jpg" style="width:20%;height:20%;" alt="groupe">');
 									}
 								
 		echo('<div class="well"  style="text-align:center;"><a href="groupe_page.php?valeur='.$donnees['id'].'">'.$donnees['nom'].'<br /></a></div>');

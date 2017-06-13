@@ -41,7 +41,7 @@
 		echo('<p>'.'A '.$result['position'].'</p>'); 
 		}
 	
-	echo('</br>');
+	echo('<br />');
 	echo('<p>'.$result['date'].'<p>');
 	echo('<p> Par '.$result['prenom'].' '.$result['nom'].'<p>');
 	echo('</div>');
@@ -58,7 +58,7 @@
 		echo('<p>'.'A '.$result['position'].'</p>'); 
 		}
 	
-	echo('</br>');
+	echo('<br />');
 	echo('<p>'.$result['date'].'<p>');
 	echo('<p> Par '.$result['prenom'].' '.$result['nom'].'<p>');
 	echo('</div>');
