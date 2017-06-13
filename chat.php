@@ -1,12 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fr">
      <head>
         <meta charset="utf-8">
 
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
 <script>
 function refresh_liste2()
 
@@ -145,8 +142,6 @@ header('Location: ./index.php');
 <body onload=' refresh_liste2(),refresh_message();'>
 
 
-
-
 <div class="container">
       <header class="row">
         <div id="titre" class="col-sm-12">
@@ -173,7 +168,6 @@ header('Location: ./index.php');
 						
 					<table>
 						<tr>
-
 							<td><p><textarea name="message" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
 							<td><input style="cursor:pointer" class="btn btn-success btn btn-success" type="submit" name="envoyer" value="envoyer"></td>
 							<td><input style="cursor:pointer" class="btn btn-sucess btn btn-success" type="submit" name="joindre" value="joindre un fichier"></td>

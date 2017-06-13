@@ -39,13 +39,14 @@ overflow: auto;
 	color:#01A9DB;
 }
 
-textarea[type="text"]{
+textarea[name="message"]{
 	width: 100%;
 	padding: 20px 120px;
 	margin: 8px 0;
 	box-sizing: border-box;
 	border: 2px solid #252525;
 	border-radius: 4px;
+	resize:none;
 }
 
 input[type="submit"], input[type="reset"] , .btn {
