@@ -49,6 +49,7 @@ textarea[name="msg"]{
 	resize:none;
 }
 
+
 input[type="submit"], input[type="reset"] , .btn {
     border-radius: 20px;
 }
