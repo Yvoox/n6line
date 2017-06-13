@@ -168,7 +168,7 @@ header('Location: ./index.php');
 						
 					<table>
 						<tr>
-							<td><p><textarea name="message" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
+							<td><p><textarea name="msg" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
 							<td><input style="cursor:pointer" class="btn btn-success btn btn-success" type="submit" name="envoyer" value="envoyer"></td>
 							<td><input style="cursor:pointer" class="btn btn-sucess btn btn-success" type="submit" name="joindre" value="joindre un fichier"></td>
 						</tr>              

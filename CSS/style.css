@@ -39,7 +39,7 @@ overflow: auto;
 	color:#01A9DB;
 }
 
-textarea[name="message"]{
+textarea[name="msg"]{
 	width: 100%;
 	padding: 20px 120px;
 	margin: 8px 0;
