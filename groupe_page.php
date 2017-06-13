@@ -66,12 +66,11 @@ setTimeout('refresh_liste()', 1500);
 		echo('<script>window.location = "./error_groupe.php";</script>');
 	}
 	
-	
-	echo '<title>'.$donnees['prenom']." ".$donnees['nom'].'</title>' ; 
+
 	
 	
 	?>
-<body onload='refresh_liste(); refresh_actualite();'>
+
 
     <div class="container">
 	
@@ -100,10 +99,10 @@ setTimeout('refresh_liste()', 1500);
 								if($chemin!=NULL){
 								echo('<img src="');
 								echo $chemin['chemin'];
-								echo('" style="width:60%;height:60%;">');
+								echo('" style="width:60%;height:60%;alt="image_groupe"">');
 								}
 									else{
-										echo('<img src="./uploaded/defaut.jpg" style="width:60%;height:60%;">');
+										echo('<img src="./uploaded/defaut.jpg" style="width:60%;height:60%;" alt="image_groupe">');
 									}
 								?>
                             </p>
@@ -119,7 +118,7 @@ setTimeout('refresh_liste()', 1500);
 						
 						while($donnees=$rep->fetch()){
 	
-							echo('Nom : '.$donnees['nom'].'</br>');
+							echo('Nom : '.$donnees['nom'].'<br />');
 						}
 						
 						?>
@@ -142,7 +141,7 @@ setTimeout('refresh_liste()', 1500);
 						
 
 				<form name = "description" method="post" >
-				<textarea class="form-control" align="left" placeholder="Modifier la description du Groupe ... " name="description_groupe" style="height: 15%; width: 100%"><?php
+				<textarea class="form-control" placeholder="Modifier la description du Groupe ... " name="description_groupe" style="height: 15%; width: 100%;align:left;"><?php
 						
 					if(isset($_POST['Modifier'])){ 
 						if(!empty($_POST['description_groupe'])){ 
@@ -172,7 +171,7 @@ setTimeout('refresh_liste()', 1500);
                 </div>
                   <div class="well"> 
 				  <?php if($id_utilisateur['admin'] == 1){
-                    echo('<a href="./traitement/suppression_groupe.php?valeur='.$_GET['valeur'].'">Supprimer le groupe</a><br/>');
+                    echo('<a href="./traitement/suppression_groupe.php?valeur='.$_GET['valeur'].'">Supprimer le groupe</a><br />');
 					echo('<form name="changement" method="post" enctype="multipart/form-data">');
 					echo('<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Changer la photo de groupe <input type="file" name="fichier">');
 					echo('<input type ="submit" name="Changer" value="Changer" >');
@@ -224,7 +223,7 @@ setTimeout('refresh_liste()', 1500);
 		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
 			echo 'Upload effectué avec succès !';
 			$chemin = $dossier.$fichier;
-			echo '</br>'.$chemin.'</br>' ; 
+			echo '<br />'.$chemin.'<br />' ; 
 			ajout_image($chemin);
 		}
 		else{
@@ -251,9 +250,9 @@ setTimeout('refresh_liste()', 1500);
                    <div class="well" >
 			<form name="Publier" method="post" enctype="multipart/form-data">
 		
-				<input class="form-control" type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-				<input class="form-control" type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-				<input class="form-control" type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input class="form-control" type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+				<input class="form-control" type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+				<input class="form-control" type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
 
@@ -310,7 +309,7 @@ setTimeout('refresh_liste()', 1500);
 		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
 			echo 'Upload effectué avec succès !';
 			$chemin = $dossier.$fichier;
-			echo '</br>'.$chemin.'</br>' ; 
+			echo '<br />'.$chemin.'<br />' ; 
 			$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,'.$id_act[0].',0,\''.$chemin.'\') ');
 		}
 		else{
@@ -365,9 +364,9 @@ setTimeout('refresh_liste()', 1500);
 	$chemin=$img->fetch();
 	
 					if($chemin!=NULL){	
-		echo('</br><img src="');
+		echo('<br /><img src="');
 		echo $chemin['chemin'];
-		echo('" style="width:40%;height:40%;">');
+		echo('" style="width:40%;height:40%;" alt="img">');
 	}
 						
 
@@ -380,7 +379,7 @@ setTimeout('refresh_liste()', 1500);
 				echo('<p>'.'À '.$donnees['position'].'</p>'); 
 			}
 			echo('<p> Par <a href="./profil_autre.php?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
-			echo('</br>');
+			echo('<br />');
 			echo('<p>'.$donnees['date'].'<p>');
 			echo('</div>');
 }
@@ -393,7 +392,8 @@ setTimeout('refresh_liste()', 1500);
             
          </div>
 
-        
+    </div>
+</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -89,16 +89,16 @@ setTimeout('refresh_liste()', 3000);
 						<?php include('./traitement/liste_groupe_page.php'); ?>
 					<div class="well" > 							
 					<form name="Créer un groupe" action="./traitement/creation_groupe.php" method="post">
-							
-								<input type="textarea" placeholder="Un nom" name="nom" style="height: 5%; width: 100%">
-								<input type="textarea" placeholder="Description du groupe" name="contenu" style="height: 10%; width: 100%"> 
+								
+								<input type="text" placeholder="Un nom" name="nom" style="height: 5%; width: 100%">
+								<input type="text" placeholder="Description du groupe" name="contenu" style="height: 10%; width: 100%"> 
 								<input type ="submit" name="Creer" value="Creer" >
 								<input type ="submit" name="Photo" value="Photo" >
 								
 							</form></div>
 					</div>
 				</div>
-				
+			</div>	
 	</div>
 
         
