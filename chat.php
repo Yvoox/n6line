@@ -101,7 +101,7 @@ document.getElementById('message').innerHTML = tmp;
 
 xhr_object.send(null);
 
-setTimeout('refresh_message()', 30000);
+setTimeout('refresh_message()', 100);
 
 }
 
