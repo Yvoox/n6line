@@ -98,13 +98,13 @@ setTimeout('refresh_liste()', 1500);
 								echo('" style="width:60%;height:60%;" alt="image profile>">');
 								}
 									else{
-										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;" alt="image profile>"');
+										echo('<img src="./uploaded/unisex.jpg" style="width:60%;height:60%;" alt="image profile;">');
 									}
 								?>
                             </p>
                          </div>
                           <div class="col-md-6">
-                           <p>
+                           
 				
 					<?php
 						$rep = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' ');  
@@ -131,9 +131,9 @@ setTimeout('refresh_liste()', 1500);
 
 							    $ma_date_de_naissance = $donnees['age'];
 							    $mon_age = Age($ma_date_de_naissance);
-							    echo('Age : ');
+							    echo('<p>Age : ');
 							    echo $mon_age;
-								echo (' ans<br>');
+								echo (' ans </p>');
 							
 							
 								function Anniv($date_naissance)
@@ -142,7 +142,7 @@ setTimeout('refresh_liste()', 1500);
 								$arr2 = explode('-', date('Y-m-d'));
 
 								if(($arr1[1] < $arr2[1]) || (($arr1[1] == $arr2[1]) && ($arr1[2] <= $arr2[2])))
-									return "Joyeux anniversaire";
+									return "<p>Joyeux anniversaire !!</p>";
 							    }
 								$anniv=anniv($ma_date_de_naissance);
 								echo $anniv;
@@ -150,7 +150,6 @@ setTimeout('refresh_liste()', 1500);
 						}
 						
 						?>
-						</p>
 						<p>
 						<?php
 							/* Sélection de la fonction de la personne, ou affichage de la promo si étudiant */ 
@@ -202,6 +201,7 @@ setTimeout('refresh_liste()', 1500);
                         </div>
                      </div>  
                 </div>
+				
                   <div class="well"> 
                     <a href="#">Paramètres du compte</a><br/>
                    <!-- <a href="./traitement/photo_profil.php">Changer votre photo de profil</a><br/>-->
@@ -225,9 +225,9 @@ setTimeout('refresh_liste()', 1500);
 			<form name="Publier" method="post" enctype="multipart/form-data">
 
 		
-				<input class="form-control" type="textarea" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
-				<input class="form-control" type="textarea" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
-				<input class="form-control" type="textarea" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
+				<input class="form-control" type="text" placeholder="Un titre" name="titre" style="height: 5%; width: 100%">
+				<input class="form-control" type="text" placeholder="Où étiez-vous ? " name="position" style="height: 5%; width: 100%">
+				<input class="form-control" type="text" placeholder="Rédigez votre publication ici" name="contenu" style="height: 10%; width: 100%"> 
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000"> Ajouter une photo <input type="file" name="fichier">
 				<input type ="submit" name="Publier" value="Publier" >
 				
@@ -289,7 +289,7 @@ setTimeout('refresh_liste()', 1500);
 		if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier.$fichier)){
 			echo 'Upload effectué avec succès !';
 			$chemin = $dossier.$fichier;
-			echo '</br>'.$chemin.'</br>' ; 
+			echo '<br>'.$chemin.'<br>' ; 
 			$bdd->query('INSERT INTO image(idutil,idact,idgroup,chemin) VALUES( 0,'.$id_act[0].',0,\''.$chemin.'\') ');
 		}
 		else{
@@ -348,9 +348,9 @@ setTimeout('refresh_liste()', 1500);
 	$chemin=$img->fetch();
 	
 					if($chemin!=NULL){	
-		echo('</br><img src="');
+		echo('<br><img src="');
 		echo $chemin['chemin'];
-		echo('" style="width:40%;height:40%;">');
+		echo('" style="width:40%;height:40%;" alt="img-contenu;">');
 	}
 			
 			echo('<h2>'.$donnees['titre'].'</h2>');
@@ -358,15 +358,15 @@ setTimeout('refresh_liste()', 1500);
 			
 			
 			
-			echo('<p>'.filtre_texte($donnees['contenu']).'<p>');
+			echo('<p>'.filtre_texte($donnees['contenu']).'</p>');
 			
 			isYoutubeVideo($donnees['contenu'],'100%','100%'); 
 			
 			if($donnees['position'] != ''){
 				echo('<p>'.'À '.$donnees['position'].'</p>'); 
 			}
-			echo('</br>');
-			echo('<p>'.$donnees['date'].'<p>');
+			echo('<br>');
+			echo('<p>'.$donnees['date'].'</p>');
 			?>
 			
 				<a href='./commenter.php?id=<?php echo $id[0]; ?> '>Commenter <?php echo '('.count_com($id[0]).')' ; ?> </a>
@@ -384,7 +384,8 @@ setTimeout('refresh_liste()', 1500);
             
          </div>
 
-        
+        </div>
+		</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
