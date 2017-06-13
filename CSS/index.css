@@ -41,7 +41,8 @@ input.form-control , input[type="submit"], input[type="reset"] , .btn {
     transition: all ease-in-out 0.2s;
 	display: inline;
 }
-/.col-md-offset-0{
+
+.col-md-offset-0{
 	display: inline;
 }
 
