@@ -101,7 +101,7 @@ aria-hidden="true"></span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="./traitement/deconnexion.php">Déconnexion</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Signaler un problème</a></li>
+            <li><a href="./signaler_pblm.php">Signaler un problème</a></li>
             <li><a href="#">Aide</a></li>
           </ul>
         </li>
