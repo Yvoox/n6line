@@ -49,62 +49,90 @@
 	
 echo('<div class="well">');
 echo('<h2> Gérer des membres :</h2>');
-$rep = $bdd->query('SELECT DISTINCT(id),prenom,nom,appartient.idUtil,appartient.admin FROM utilisateur INNER JOIN appartient ON utilisateur.id = appartient.idUtil');
+// $rep = $bdd->query('SELECT DISTINCT(id),prenom,nom,appartient.idUtil,appartient.admin FROM utilisateur INNER JOIN appartient ON utilisateur.id = appartient.idUtil');
 
-while($donnees=$rep->fetch()){
-	if($donnees['admin']==0){
+// while($donnees=$rep->fetch()){
+	// if($donnees['admin']==0){
 		
+	// echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a>');
+	// $temp=$bdd->query('SELECT idGroup,admin FROM appartient where idUtil ='.$donnees['idUtil'].'');
+	// while($rest=$temp->fetch()){
+	// if($rest['idGroup']==$_GET['valeur']){
+		// $retirer = 1;
+		// $ajouter = 0;
+
+	// }
+		// if($rest['idGroup']!=$_GET['valeur']){
+		// $ajouter = 1;
+		// $retirer = 0;
+	// }
+	// }
+
+		// if($ajouter == 1){
+			// if($rest['admin']==0){
+		// echo('<a href="./traitement/ajouter_groupe.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Ajouter au groupe </a>');
+			// }
+	// }
+	// if($retirer == 1){
+		
+		// if($rest['admin']==0){
+			// echo('<a href="./traitement/retirer_groupe.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer du groupe </a>');
+			// echo('<a href="./traitement/add_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Donner les droits d\'administration </a>');
+		// }
+	// }
+	
+		// }
+// }
+	
+	$rep = $bdd->query('SELECT id,nom,prenom FROM utilisateur');
+	while($donnees=$rep->fetch()){
 	echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a>');
-	$temp=$bdd->query('SELECT idGroup,admin FROM appartient where idUtil ='.$donnees['idUtil'].'');
-	while($rest=$temp->fetch()){
-	if($rest['idGroup']==$_GET['valeur']){
-		$retirer = 1;
-		$ajouter = 0;
+	
+	$temp= $bdd->query('SELECT idutil,admin, idGroup FROM appartient INNER JOIN utilisateur ON appartient.idUtil = utilisateur.id');
+	$tmp=0;
+	while($admin=$temp->fetch()){
+	
+	if($admin['idutil'] == $donnees['id'] && $admin['admin'] == 1 && $admin['idGroup'] == $_GET['valeur']){
+		echo('<a href="./traitement/del_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer les droits d\'administration </a>');	
+		$tmp=1;
+	}
+	if($admin['idutil'] == $donnees['id'] && $admin['admin'] == 0 && $admin['idGroup'] == $_GET['valeur']){
+		echo('<a href="./traitement/retirer_groupe.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer du groupe </a>');
+		echo('<a href="./traitement/add_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Donner les droits d\'administration </a>');
+		$tmp=1;
+	}
 
+	
 	}
-		if($rest['idGroup']!=$_GET['valeur']){
-		$ajouter = 1;
-		$retirer = 0;
-	}
-	}
-
-		if($ajouter == 1){
-			if($rest['admin']==0){
+	if($tmp!=1){
 		echo('<a href="./traitement/ajouter_groupe.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Ajouter au groupe </a>');
-			}
 	}
-	if($retirer == 1){
-		
-		if($rest['admin']==0){
-			echo('<a href="./traitement/retirer_groupe.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer du groupe </a>');
-			echo('<a href="./traitement/add_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Donner les droits d\'administration </a>');
-		}
+	echo('<br>');
 	}
 	echo('<br />');
-	}
-}
+
 
 
 
 echo('</div>');
 
 
-echo('<div class="well">');
-echo('<h2> Gestion des administrateurs :</h2>');
-$rep = $bdd->query('SELECT DISTINCT(id),prenom,nom,appartient.idUtil,appartient.admin FROM utilisateur INNER JOIN appartient ON utilisateur.id = appartient.idUtil');
+// echo('<div class="well">');
+// echo('<h2> Gestion des administrateurs :</h2>');
+// $rep = $bdd->query('SELECT DISTINCT(id),prenom,nom,appartient.idUtil,appartient.admin FROM utilisateur INNER JOIN appartient ON utilisateur.id = appartient.idUtil');
 
-while($donnees=$rep->fetch()){
-	if($donnees['admin']==1){
+// while($donnees=$rep->fetch()){
+	// if($donnees['admin']==1){
 		
-	echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a>');
-		echo('<a href="./traitement/del_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer les droits d\'administration </a>');
-	echo('<br />');
-	}
-}
+	// echo('<a href="profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a>');
+		// echo('<a href="./traitement/del_admin.php?per='.$donnees['id'].'&val='.$_GET['valeur'].'"> Retirer les droits d\'administration </a>');
+	// echo('<br />');
+	// }
+// }
 
 
 
-echo('</div>');
+// echo('</div>');
 
 
 echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>');
