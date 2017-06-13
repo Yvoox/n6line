@@ -60,7 +60,7 @@ header('Location: ./traitement/deconnexion.php');
 							if($donnees['position'] != ''){
 								echo('<p>'.'A '.$donnees['position'].'</p>'); 
 							}
-							echo('</br>');
+							echo('<br>');
 							echo('<p>'.$donnees['date'].'<p>');
 							echo('<p> Par <a href="./profil_autre?id='.$donnees['id'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$donnees['prenom'].' '.$donnees['nom'].' </a></p>');
 							echo('</div>');
@@ -71,7 +71,7 @@ header('Location: ./traitement/deconnexion.php');
 							
 							<form name="Commenter" action="./traitement/commenter_publication.php?id=<?php echo $_GET['id']; ?>" method="post"> 
 		
-								<input type="textarea" placeholder="Rédigez votre commentaire ici" name="contenu" style="height: 10%; width: 100%"> 
+								<input type="text" placeholder="Rédigez votre commentaire ici" name="contenu" style="height: 10%; width: 100%"> 
 								<input type ="submit" name="Commenter" value="Commenter" >
 								
 							</form>
@@ -108,7 +108,7 @@ header('Location: ./traitement/deconnexion.php');
 								echo('<p> Commenté par <a href="./profil_autre?id='.$donnees['idutil'].'" class="btn-sm btn-info" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'.$id['prenom'].' '.$id['nom'].' </a></p>');
 							}
 							echo('</div>');
-							echo '</br>' ; 
+							echo '<br>' ; 
 						}
 						
 						echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>');

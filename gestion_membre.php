@@ -1,4 +1,9 @@
-﻿<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+﻿
+<?php include('./header.php'); ?>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
 
 <script language="javascript" type='text/javascript'>
     function auto_deco(){
@@ -10,9 +15,6 @@
 
 
 
-
-
-<?php include('./header.php'); ?>
 
     <div class="container">
 	
@@ -121,6 +123,10 @@ echo('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min
 				
 
 	</div>
+
+	
+	</div>
+
 
         
 

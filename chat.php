@@ -1,4 +1,9 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+     <head>
+        <meta charset="utf-8">
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
@@ -107,18 +112,12 @@ setTimeout('refresh_message()', 30000);
 
 </script>
 
-<!- Code de securisation du retour arrière->
-
 <?php
 session_start(); 
 if(empty($_SESSION['login'])) {
 header('Location: ./index.php');
 }?> 
 
-<!DOCTYPE html>
-<html lang="fr">
-     <head>
-        <meta charset="utf-8">
          <title>N6LINE</title>
         <link rel="stylesheet" href="./CSS/style.css">
 
@@ -144,6 +143,8 @@ header('Location: ./index.php');
     </head>
 
 <body onload=' refresh_liste2(),refresh_message();'>
+
+
 
 
 <div class="container">
@@ -172,7 +173,8 @@ header('Location: ./index.php');
 						
 					<table>
 						<tr>
-							<td><p><textarea type="text" name="message" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
+
+							<td><p><textarea name="message" class="form-control" placeholder="tapez votre message..." ></textarea></p></td>
 							<td><input style="cursor:pointer" class="btn btn-success btn btn-success" type="submit" name="envoyer" value="envoyer"></td>
 							<td><input style="cursor:pointer" class="btn btn-sucess btn btn-success" type="submit" name="joindre" value="joindre un fichier"></td>
 						</tr>              

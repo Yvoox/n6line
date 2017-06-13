@@ -8,9 +8,10 @@ if(preg_match('/https:\/\/(www\.)*youtube\.com\/.*/',$text)){
 								preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
 								$id = $matches[1];
 						?>
-							<iframe id="ytplayer" type="text/html" width=<?php echo $width ?> height=<?php echo $height ?>
+						
+							<iframe id="ytplayer" style=" width:<?php echo $width ?>; height:<?php echo $height ?>; border:0;"
 									src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
-									frameborder="0" allowfullscreen></iframe> 
+									allowfullscreen></iframe> 
 
 						<?php 
 						}
