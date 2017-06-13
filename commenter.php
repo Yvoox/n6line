@@ -123,7 +123,7 @@ header('Location: ./traitement/deconnexion.php');
 				<div class="col-md-2">
 					
 						<div class="well"><h5> SPONSORISE</h5><p>
-							<img src="../img/imag4.png" style="width:100%"/></p>
+							<img src="../img/imag4.png" style="width:100%" alt="iariss"/></p>
 							<p>
 							Retrouver nous sur <a href="#">Iariss </a>pour plus d'infos
 							</p>
