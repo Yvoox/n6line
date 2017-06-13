@@ -336,7 +336,8 @@ setTimeout('refresh_liste()', 1500);
 				/*echo"<script language=\"javascript\">" ; 
 				echo"alert('Vous devez saisir au moins du texte pour pouvoir publier')";
 				echo"</script>";*/
-				header("location:profil.php"); 
+				//header("location:profil.php"); 
+			echo('<script>window.location = "./groupe_page.php?valeur='.$_GET['valeur'].'";</script>');
 				}
 		}
 		
@@ -351,7 +352,8 @@ setTimeout('refresh_liste()', 1500);
 		
 		while($donnees=$rep->fetch()){
 			echo('<div class="well">');
-			$id_actualite = $bdd ->query('SELECT id from actualite where contenu = \''.$donnees['contenu'].'\' and titre = \''.$donnees['titre'].'\' ') ; 
+			$id_actualite = $bdd ->prepare('SELECT id from actualite where contenu = :contenu and titre = :titre ') ; 
+			$id_actualite ->execute(array( 'contenu' => $donnees['contenu'], 'titre' => $donnees['titre']));
 			$id = $id_actualite->fetch(); 
 			$tmp = $bdd->query('SELECT * FROM groupe INNER JOIN appartient ON groupe.id = appartient.idGroup INNER JOIN utilisateur ON appartient.idUtil = utilisateur.id where groupe.id='.$_GET['valeur'].' AND utilisateur.uha = \''.$login.'\' ');  
 			$util = $tmp->fetch(); 

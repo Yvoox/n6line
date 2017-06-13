@@ -22,10 +22,12 @@
 			
 			echo $message.'</br>' ;  
 			
-			$insert_message = $bdd->query('INSERT INTO message(contenu,fichier,date) VALUES(\''.$message.'\' , \'\' , \''.$datetime.'\') '); 
+			$insert_message = $bdd->prepare('INSERT INTO message(contenu,fichier,date) VALUES(:message , \'\' , :date) '); 
+			$insert_message -> execute(array('message' => $message,'date' => $datetime));
 			
 			$id_utilisateur = $bdd->query('SELECT id from utilisateur where uha =\''.$login.'\' '); 
-			$id_message = $bdd ->query('SELECT id from message where contenu = \''.$message.'\' ') ; 
+			$id_message = $bdd ->prepare('SELECT id from message where contenu = :message ') ; 
+			$id_message ->execute(array('message' => $message));
 			
 			$id_uti = $id_utilisateur->fetch();
 			//echo $id_uti[0] ;

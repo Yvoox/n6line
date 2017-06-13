@@ -211,7 +211,8 @@ $sessionid=$name->fetch();
 		
 		while($donnees=$rep->fetch()){
 			echo('<div class="well">');
-			$id_actualite = $bdd ->query('SELECT id from actualite where contenu = \''.$donnees['contenu'].'\' and titre = \''.$donnees['titre'].'\' ') ; 
+			$id_actualite = $bdd ->prepare('SELECT id from actualite where contenu = :contenu and titre = :titre ') ; 
+			$id_actualite ->execute(array('contenu' => $donnees['contenu'], 'titre' => $donnees['titre']));
 			$id = $id_actualite->fetch(); 
 			echo('<h2>'.$donnees['titre'].'</h2>');
 			echo('<p>'.filtre_texte($donnees['contenu']).'<p>');

@@ -317,7 +317,7 @@ setTimeout('refresh_liste()', 1500);
 				/*echo"<script language=\"javascript\">" ; 
 				echo"alert('Vous devez saisir au moins du texte pour pouvoir publier')";
 				echo"</script>";*/
-				header("location:profil.php"); 
+				echo('<script>window.location = "./profil.php?valeur='.$_GET['valeur'].'";</script>');
 				}
 		}
 		
@@ -337,7 +337,8 @@ setTimeout('refresh_liste()', 1500);
 		
 		while($donnees=$rep->fetch()){
 			echo('<div class="well">');
-			$id_actualite = $bdd ->query('SELECT id from actualite where contenu = \''.$donnees['contenu'].'\' and titre = \''.$donnees['titre'].'\' ') ; 
+			$id_actualite = $bdd ->prepare('SELECT id from actualite where contenu = :contenu and titre = :titre ') ; 
+			$id_actualite->execute(array('contenu'=>$donnees['contenu'], 'titre'=>$donnees['titre']));
 			$id = $id_actualite->fetch(); 
 			
 			?>	

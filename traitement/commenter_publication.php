@@ -32,8 +32,9 @@
 				$insert_commentaire->execute(array('contenu' => $_POST['contenu']));
 				
 
-				$id_com = $bdd->query('SELECT id FROM commentaire WHERE contenu = \''.$contenu.'\' AND idutil = \''.$id_uti[0].'\' '); 
-				$id_commentaire = $id_com ->fetch(); 
+				$id_com = $bdd->prepare('SELECT id FROM commentaire WHERE contenu = :contenu AND idutil = \''.$id_uti[0].'\' '); 
+				$id_com->execute(array('contenu' => $contenu)); 
+				$id_commentaire=$id_com -> fetch();
 
 				$insert_commente = $bdd->prepare('INSERT INTO commente(idact,idcom) VALUES(\''.$_GET['id'].'\', \''.$id_commentaire[0].'\'  ) '); 
 				$insert_commente ->execute(); 
